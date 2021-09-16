@@ -1,0 +1,15 @@
+{
+  "name": "sass",
+  "version": "1.0.0",
+  "description": "stylesheet",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./:../../../public/custom_back_office_css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "style"
+  ],
+  "author": "",
+  "license": "MIT"
+}
