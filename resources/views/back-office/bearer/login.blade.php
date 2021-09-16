@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Signin Template · Bootstrap v5.0</title>
+    <title>Zaha admin login</title>
 
 
     
@@ -37,25 +37,65 @@
   <body class="text-center login-admin-page">
     
 <main class="form-signin">
-  <form>
-    
+    @isset($url)
+    <form method="POST" action='{{ url("login/$url") }}' aria-label="{{ __('Login') }}">
+    @endisset
+          @csrf
+
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="email" 
+	  class="form-control @error('email') is-invalid @enderror" 
+	  id="floatingInput" 
+	  value="{{ old('email') }}" 
+	  required 
+	  autocomplete="email" 
+	  autofocus 
+	  name="email"
+	  placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
+		@error('email')
+			<span class="invalid-feedback" role="alert">
+				<strong>{{ $message }}</strong>
+			</span>
+		@enderror
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
+		<input type="password" 
+		id="floatingPassword" 
+		class="form-control @error('password') is-invalid @enderror" 
+		name="password" 
+		required 
+		autocomplete="current-password"
+		>
+      	<label for="floatingPassword">Password</label>
+		@error('password')
+			<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		  </span>
+	  	@enderror
     </div>
 
     <div class="checkbox mb-3">
       <label>
-        <input type="checkbox" value="remember-me"> Remember me
+        <input 
+		type="checkbox" 
+		value="remember-me"
+		class="form-check-input" 
+		type="checkbox" 
+		name="remember" 
+		id="remember" {{ old('remember') ? 'checked' : '' }}
+		> Remember me
       </label>
     </div>
+
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+	@if (Route::has('password.request'))
+		<a class="btn btn-link" href="{{ route('password.request') }}">
+			{{ __('Forgot Your Password?') }}
+		</a>
+	@endif
     <p class="mt-5 mb-3 text-muted">&copy; 2021 {{ config('app.name', 'Laravel') }}</p>
   </form>
 </main>

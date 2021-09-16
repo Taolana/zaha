@@ -42,10 +42,24 @@ class LoginController extends Controller
         $this->middleware('guest:touriste')->except('logout');
     }
 
+    /**
+     * 
+     * Show forms
+     */
     public function showAdminLoginForm()
     {
-        return view('auth.login', ['url' => 'admin']);
+        return view('back-office.bearer.login', ['url' => 'admin']);
     }
+
+    public function showTouristeLoginForm()
+    {
+        return view('auth.login', ['url' => 'touriste']);
+    }
+
+    /**
+     * 
+     * Log users
+     */
 
     public function adminLogin(Request $request)
     {
@@ -61,10 +75,6 @@ class LoginController extends Controller
         return back()->withInput($request->only('email', 'remember'));
     }
 
-    public function showTouristeLoginForm()
-    {
-        return view('auth.login', ['url' => 'touriste']);
-    }
 
     public function touristeLogin(Request $request)
     {
