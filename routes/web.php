@@ -28,13 +28,24 @@ Auth::routes();
 
 Route::get('/login/admin', [LoginController::class, 'showAdminLoginForm']);
 Route::get('/login/touriste', [LoginController::class,'showTouristeLoginForm']);
+Route::get('/login/moderateur', [LoginController::class, 'showModerateurLoginForm']);
+Route::get('/login/guide', [LoginController::class,'showGuideLoginForm']);
+
 Route::get('/register/admin', [RegisterController::class,'showAdminRegisterForm']);
 Route::get('/register/touriste', [RegisterController::class,'showTouristeRegisterForm']);
+Route::get('/register/moderateur', [RegisterController::class,'showModerateurRegisterForm']);
+Route::get('/register/guide', [RegisterController::class,'showGuideRegisterForm']);
+
 
 Route::post('/login/admin', [LoginController::class,'adminLogin']);
 Route::post('/login/touriste', [LoginController::class,'touristeLogin']);
+Route::post('/login/moderateur', [LoginController::class,'moderateurLogin']);
+Route::post('/login/guide', [LoginController::class,'guideLogin']);
+
 Route::post('/register/admin', [RegisterController::class,'createAdmin']);
 Route::post('/register/touriste', [RegisterController::class,'createTouriste']);
+Route::post('/register/moderateur', [RegisterController::class,'createModerateur']);
+Route::post('/register/guide', [RegisterController::class,'createGuide']);
 
 Route::group(['middleware' => 'auth:touriste'], function () {
     Route::view('/touriste', 'touriste');
@@ -42,6 +53,14 @@ Route::group(['middleware' => 'auth:touriste'], function () {
 
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/admin', 'back-office.index');
+});
+
+Route::group(['middleware' => 'auth:guide'], function () {
+    Route::view('/guide', 'guide');
+});
+
+Route::group(['middleware' => 'auth:moderateur'], function () {
+    Route::view('/moderateur', 'back-office.index');
 });
 
 Route::get('logout', [LoginController::class,'logout']);

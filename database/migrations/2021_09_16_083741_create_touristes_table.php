@@ -16,9 +16,9 @@ class CreateTouristesTable extends Migration
         Schema::create('touristes', function (Blueprint $table) {
             $table->id();
             $table->string('pseudo');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('nationality');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('nationality')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('is_touriste')->nullable()->default(false);

@@ -12,7 +12,7 @@ class Touriste extends Authenticatable
     protected $guard = 'touriste';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'pseudo', 'first_name',	'last_name', 'nationality',	'email', 'password', 'is_touriste',
     ];
 
     protected $hidden = [

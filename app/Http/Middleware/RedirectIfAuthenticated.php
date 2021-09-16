@@ -38,6 +38,12 @@ class RedirectIfAuthenticated
         if ($guard == "touriste" && Auth::guard($guard)->check()) {
             return redirect('/touriste');
         }
+        if ($guard == "moderateur" && Auth::guard($guard)->check()) {
+            return redirect('/moderateur/home');
+        }
+        if ($guard == "guide" && Auth::guard($guard)->check()) {
+            return redirect('/guide');
+        }
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
         }

@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Guide;
 use App\Models\Touriste;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Moderateur;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -44,6 +46,8 @@ class RegisterController extends Controller
         $this->middleware('guest');
         $this->middleware('guest:admin');
         $this->middleware('guest:touriste');
+        $this->middleware('guest:moderateur');
+        $this->middleware('guest:guide');
     }
 
     /**
@@ -55,7 +59,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['string', 'max:255'],
+            'pseudo' => [ 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -75,6 +80,22 @@ class RegisterController extends Controller
     public function showTouristeRegisterForm()
     {
         return view('auth.register', ['url' => 'touriste']);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showModerateurRegisterForm()
+    {
+        return view('auth.register', ['url' => 'moderateur']);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showGuideRegisterForm()
+    {
+        return view('auth.register', ['url' => 'guide']);
     }
 
     /**
@@ -118,10 +139,45 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
         Touriste::create([
-            'name' => $request->name,
+            'pseudo' => $request->pseudo,
             'email' => $request->email,
+            'is_touriste' => true,
             'password' => Hash::make($request->password),
         ]);
         return redirect()->intended('login/touriste');
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function createModerateur(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        Moderateur::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'is_moderator' => true,
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect()->intended('login/moderateur');
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function createGuide(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        Guide::create([
+            'pseudo' => $request->pseudo,
+            'email' => $request->email,
+            'is_guide' => true,
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect()->intended('login/guide');
     }
 }

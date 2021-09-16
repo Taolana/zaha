@@ -18,7 +18,12 @@
             <div class="flex-shrink-0 dropdown">
                 <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 {{-- <img src="https://github.com/mdo.png" alt="{{ Auth::guard('admin')->user()->name }}" width="32" height="32" class="rounded-circle"> --}}
-                {{ Auth::guard('admin')->user()->name }}    
+                
+                @isset(Auth::guard('admin')->user()->name)
+                    {{ Auth::guard('admin')->user()->name }}
+                    @else
+                    {{ Auth::guard('moderateur')->user()->name }}
+                @endisset
                 </a>
                 
                 <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="dropdownUser2">
@@ -49,7 +54,13 @@
                           <span data-feather="plus-circle"></span>
                         </a>
                     </h6>
-                    <p class="status_owner">Connected as: {{ Auth::guard('admin')->user()->name }}</p>
+                    <p class="status_owner">Connected as: 
+                        @isset(Auth::guard('admin')->user()->name)
+                            {{ Auth::guard('admin')->user()->name }}
+                            @else
+                            {{ Auth::guard('moderateur')->user()->name }}
+                        @endisset
+                    </p>
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                         <span>Activities</span>
                         <a class="link-secondary" href="#" aria-label="Add a new report">

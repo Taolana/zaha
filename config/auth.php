@@ -60,6 +60,15 @@ return [
             'driver' => 'session',
             'provider' => 'touristes',
         ],
+        'guide' => [
+            'driver' => 'session',
+            'provider' => 'guides',
+        ],
+        
+        'moderateur' => [
+            'driver' => 'session',
+            'provider' => 'moderateurs',
+        ],
     ],
 
     /*
@@ -97,6 +106,16 @@ return [
         'touristes' => [
             'driver' => 'eloquent',
             'model' => App\Models\Touriste::class,
+        ],
+
+        'guides' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Guide::class,
+        ],
+
+        'moderateurs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Moderateur::class,
         ],
     ],
 

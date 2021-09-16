@@ -40,6 +40,8 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('guest:admin')->except('logout');
         $this->middleware('guest:touriste')->except('logout');
+        $this->middleware('guest:guide')->except('logout');
+        $this->middleware('guest:moderateur')->except('logout');
     }
 
     /**
@@ -56,6 +58,15 @@ class LoginController extends Controller
         return view('auth.login', ['url' => 'touriste']);
     }
 
+    public function showGuideLoginForm()
+    {
+        return view('auth.login', ['url' => 'guide']);
+    }
+
+    public function showModerateurLoginForm()
+    {
+        return view('back-office.bearer.login', ['url' => 'moderateur']);
+    }
     /**
      * 
      * Log users
@@ -68,7 +79,13 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::guard('admin')->attempt(
+            [
+                'email' => $request->email, 
+                'password' => $request->password,
+                'is_admin' => true,
+            ], 
+            $request->get('remember'))) {
 
             return redirect()->intended('/admin');
         }
@@ -83,9 +100,56 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('touriste')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::guard('touriste')->attempt(
+            [
+                'email' => $request->email, 
+                'password' => $request->password,
+                'is_touriste' => true,
+            ], 
+            $request->get('remember'))) {
 
             return redirect()->intended('/touriste');
+        }
+        return back()->withInput($request->only('email', 'remember'));
+    }
+
+    public function guideLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email'   => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+
+        if (Auth::guard('guide')->attempt(
+            [
+                'email' => $request->email, 
+                'password' => $request->password,
+                'is_guide' => true,
+            ], 
+            $request->get('remember'))) {
+
+            return redirect()->intended('/guide');
+        }
+        return back()->withInput($request->only('email', 'remember'));
+    }
+
+
+    public function moderateurLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email'   => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+
+        if (Auth::guard('moderateur')->attempt(
+            [
+                'email' => $request->email, 
+                'password' => $request->password,
+                'is_moderateur' => true,
+            ], 
+            $request->get('remember'))) {
+
+            return redirect()->intended('/moderateur');
         }
         return back()->withInput($request->only('email', 'remember'));
     }

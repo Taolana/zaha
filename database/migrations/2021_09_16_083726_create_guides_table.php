@@ -16,9 +16,9 @@ class CreateGuidesTable extends Migration
         Schema::create('guides', function (Blueprint $table) {
             $table->id();
             $table->string('pseudo');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('phone_number');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('phone_number')->nullable();
             $table->boolean('is_local_guide')->default(false);
             $table->string('email')->unique();
             $table->string('password');
