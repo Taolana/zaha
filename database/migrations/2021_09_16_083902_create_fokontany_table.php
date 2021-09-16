@@ -15,7 +15,7 @@ class CreateFokontanyTable extends Migration
     {
         Schema::create('fokontany', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('communes_id')->constrained();
+            $table->foreignId('commune_id')->constrained();
             $table->string('name');
             $table->timestamps();
         });

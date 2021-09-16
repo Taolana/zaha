@@ -15,7 +15,7 @@ class CreateCommunesTable extends Migration
     {
         Schema::create('communes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('districts_id')->constrained();
+            $table->foreignId('district_id')->constrained();
             $table->string('name');
             $table->timestamps();
         });
