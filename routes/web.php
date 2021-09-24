@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\admin\ModeratorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,10 @@ Route::get('/', function () {
 
 
 Auth::routes();
+
+// Route::get('{any}', function () {
+//     return view('layouts.app');
+// })->where('any', '.*');
 
 //
 //
@@ -53,6 +58,10 @@ Route::group(['middleware' => 'auth:touriste'], function () {
 
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/admin', 'back-office.index');
+
+    Route::prefix('/admin/users/moderators')->group(function () {
+        Route::get('/list', [ModeratorController::class, 'index'])->name('moderators.list');
+    });
 });
 
 Route::group(['middleware' => 'auth:guide'], function () {

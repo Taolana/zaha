@@ -14,35 +14,6 @@
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="d-flex align-items-center profile">
-            <div class="flex-shrink-0 dropdown">
-                <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                {{-- <img src="https://github.com/mdo.png" alt="{{ Auth::guard('admin')->user()->name }}" width="32" height="32" class="rounded-circle"> --}}
-                
-                @isset(Auth::guard('admin')->user()->name)
-                    {{ Auth::guard('admin')->user()->name }}
-                    @else
-                    {{ Auth::guard('moderateur')->user()->name }}
-                @endisset
-                </a>
-                
-                <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="dropdownUser2">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-                    
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </li>
-                </ul>
-            </div>
-        </div>
     </header>
     <div class="container-fluid">
         <div class="row">
@@ -68,59 +39,82 @@
                         </a>
                     </h6>
                     <ul class="list-unstyled ps-0">
-                        <li class="mb-1">
-                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                            Home
-                          </button>
-                          <div class="collapse show" id="home-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                              <li><a href="#" class="link-dark rounded">Overview</a></li>
-                              <li><a href="#" class="link-dark rounded">Updates</a></li>
-                              <li><a href="#" class="link-dark rounded">Reports</a></li>
-                            </ul>
-                          </div>
-                        </li>
-                        <li class="mb-1">
-                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                            Dashboard
-                          </button>
-                          <div class="collapse" id="dashboard-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                              <li><a href="#" class="link-dark rounded">Overview</a></li>
-                              <li><a href="#" class="link-dark rounded">Weekly</a></li>
-                              <li><a href="#" class="link-dark rounded">Monthly</a></li>
-                              <li><a href="#" class="link-dark rounded">Annually</a></li>
-                            </ul>
-                          </div>
-                        </li>
-                        <li class="mb-1">
-                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                            Orders
-                          </button>
-                          <div class="collapse" id="orders-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                              <li><a href="#" class="link-dark rounded">New</a></li>
-                              <li><a href="#" class="link-dark rounded">Processed</a></li>
-                              <li><a href="#" class="link-dark rounded">Shipped</a></li>
-                              <li><a href="#" class="link-dark rounded">Returned</a></li>
-                            </ul>
-                          </div>
-                        </li>
-                        <li class="border-top my-3"></li>
-                        <li class="mb-1">
-                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                            Account
-                          </button>
-                          <div class="collapse" id="account-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                              <li><a href="#" class="link-dark rounded">New...</a></li>
-                              <li><a href="#" class="link-dark rounded">Profile</a></li>
-                              <li><a href="#" class="link-dark rounded">Settings</a></li>
-                              <li><a href="#" class="link-dark rounded">Sign out</a></li>
-                            </ul>
-                          </div>
-                        </li>
-                    </ul>
+                        <div class="sidebar-custom list-group  scrollarea">
+                          <li class="mb-1 list-group-item">
+                            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                              Home
+                            </button>
+                            <div class="collapse show" id="home-collapse">
+                              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="#" class="link-dark rounded">Overview</a></li>
+                                <li><a href="#" class="link-dark rounded">Updates</a></li>
+                                <li><a href="#" class="link-dark rounded">Reports</a></li>
+                              </ul>
+                            </div>
+                          </li>
+                          <li class="mb-1 list-group-item">
+                            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                              Dashboard
+                            </button>
+                            <div class="collapse" id="dashboard-collapse">
+                              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="#" class="link-dark rounded">Overview</a></li>
+                                <li><a href="#" class="link-dark rounded">Weekly</a></li>
+                                <li><a href="#" class="link-dark rounded">Monthly</a></li>
+                                <li><a href="#" class="link-dark rounded">Annually</a></li>
+                              </ul>
+                            </div>
+                          </li>
+                          <li class="mb-1 list-group-item">
+                            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                              Places
+                            </button>
+                            <div class="collapse" id="orders-collapse">
+                              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="#" class="link-dark rounded">New</a></li>
+                                <li><a href="#" class="link-dark rounded">Processed</a></li>
+                                <li><a href="#" class="link-dark rounded">Declined</a></li>
+                              </ul>
+                            </div>
+                          </li>
+                          <li class="mb-1 list-group-item">
+                            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#users-collapse" aria-expanded="false">
+                              Users
+                            </button>
+                            <div class="collapse" id="users-collapse">
+                              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="{{ route('moderators.list') }}" class="link-dark rounded">Moderators</a></li>
+                                <li><a href="#" class="link-dark rounded">Touristes</a></li>
+                                <li><a href="#" class="link-dark rounded">Guides</a></li>
+                              </ul>
+                            </div>
+                          </li>
+                          <li class="border-top my-3"></li>
+                          <li class="mb-1 list-group-item">
+                            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                              Account
+                            </button>
+                            <div class="collapse" id="account-collapse">
+                              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="#" class="link-dark rounded">New...</a></li>
+                                <li><a href="#" class="link-dark rounded">Profile</a></li>
+                                <li><a href="#" class="link-dark rounded">Settings</a></li>
+                                <li><a 
+                                  class="link-dark rounded"
+                                  href="{{ route('logout') }}"
+                                  onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();"
+                                  >
+                                  Sign out</a>
+                                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                      @csrf
+                                  </form>
+                                </li>
+                              </ul>
+                            </div>
+                          </li>
+                        </div>
+                      </ul>
                 </div>
             </nav>
 

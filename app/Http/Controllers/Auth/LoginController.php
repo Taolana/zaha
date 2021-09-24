@@ -145,7 +145,7 @@ class LoginController extends Controller
             [
                 'email' => $request->email, 
                 'password' => $request->password,
-                'is_moderateur' => true,
+                'is_moderator' => true,
             ], 
             $request->get('remember'))) {
 

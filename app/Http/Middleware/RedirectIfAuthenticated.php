@@ -39,7 +39,7 @@ class RedirectIfAuthenticated
             return redirect('/touriste');
         }
         if ($guard == "moderateur" && Auth::guard($guard)->check()) {
-            return redirect('/moderateur/home');
+            return redirect('/moderateur');
         }
         if ($guard == "guide" && Auth::guard($guard)->check()) {
             return redirect('/guide');
