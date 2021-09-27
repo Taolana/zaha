@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\front\PlaceController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\admin\ModeratorController;
 
@@ -32,6 +33,10 @@ Auth::routes();
 //
 //
 
+// guest
+
+Route::get('/place/list', [PlaceController::class, 'index'])->name('guest.places.list');
+
 Route::get('/login/admin', [LoginController::class, 'showAdminLoginForm']);
 Route::get('/login/touriste', [LoginController::class,'showTouristeLoginForm']);
 Route::get('/login/moderateur', [LoginController::class, 'showModerateurLoginForm']);
@@ -53,8 +58,14 @@ Route::post('/register/touriste', [RegisterController::class,'createTouriste']);
 Route::post('/register/moderateur', [RegisterController::class,'createModerateur']);
 Route::post('/register/guide', [RegisterController::class,'createGuide']);
 
+
+// middlewares
+
 Route::group(['middleware' => 'auth:touriste'], function () {
-    Route::view('/touriste', 'touriste');
+    Route::view('/touriste', 'front-office.index');
+    Route::prefix('/touriste')->group(function () {
+        Route::get('/list', [PlaceController::class, 'index'])->name('touriste.places.list');
+    });
 });
 
 Route::group(['middleware' => 'auth:admin'], function () {
@@ -66,7 +77,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
 });
 
 Route::group(['middleware' => 'auth:guide'], function () {
-    Route::view('/guide', 'guide');
+    Route::view('/guide', 'front-office.index');
+    Route::prefix('/guide/place')->group(function () {
+        Route::get('/list', [PlaceController::class, 'index'])->name('guide.places.list');
+    });
 });
 
 Route::group(['middleware' => 'auth:moderateur'], function () {

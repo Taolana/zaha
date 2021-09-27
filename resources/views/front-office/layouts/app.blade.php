@@ -24,19 +24,73 @@
                         <ul class="navbar-nav me-auto"></ul>
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">{{ __('all.home') }}</a>
+                                @guest
+                                    <a class="nav-link" href="/">{{ __('all.home') }}</a>
+                                    @else
+                                        @isset(Auth::guard('guide')->user()->pseudo)
+                                            <a class="nav-link" href="/guide">{{ __('all.home') }}</a>
+                                            @else
+                                            <a class="nav-link" href="/touriste">{{ __('all.home') }}</a>
+                                        @endisset
+                                @endguest
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">{{ __('all.places') }}</a>
+                                @guest
+                                    <a class="nav-link" href="{{ route('guest.places.list') }}">{{ __('all.home') }}</a>
+                                    @else
+                                        @isset(Auth::guard('guide')->user()->pseudo)
+                                            <a class="nav-link" href="{{ route('guide.places.list') }}">{{ __('all.places') }}</a>
+                                            @else
+                                            <a class="nav-link" href="{{ route('touriste.places.list') }}">{{ __('all.places') }}</a>
+                                        @endisset
+                                @endguest
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" >{{ __('all.news') }}</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">{{ __('all.login') }}</a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdown07">
-                                <li><a class="dropdown-item" href="/login/touriste">Touriste</a></li>
-                                <li><a class="dropdown-item" href="/login/guide">Guide</a></li>
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">
+                                    
+                                    @guest
+                                    {{ __('all.login') }}
+                                    @endguest
+                                    @isset(Auth::guard('touriste')->user()->pseudo)
+                                        {{ Auth::guard('touriste')->user()->pseudo }}
+                                    @endisset
+                                    @isset(Auth::guard('guide')->user()->pseudo)
+                                    {{ Auth::guard('guide')->user()->pseudo }}
+                                    @endisset
+
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown07">
+                                    @guest
+                                    <li><a class="dropdown-item" href="/login/touriste">Touriste</a></li>
+                                    <li><a class="dropdown-item" href="/login/guide">Guide</a></li>
+                                    @else
+                                        <li>
+                                            <h6 class="dropdown-header">You are connected as 
+                                            @isset(Auth::guard('guide')->user()->pseudo)
+                                                <strong>Guide</strong>
+                                                @else
+                                                <strong>Touriste</strong>
+                                            @endisset
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    @endguest
                                 </ul>
                             </li>
                         </ul>
