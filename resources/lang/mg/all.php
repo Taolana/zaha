@@ -9,5 +9,12 @@ return [
     'about-us' => 'Mombamomba anay',
     'weekly-place' => 'Toerana misongadina isan-kerinandro',
     'top-place' => 'Toerana manana isa betsaka',
-
+    'sign-up' => 'Hanokatra kaonty',
+    'forgot-password' => 'Adinoko ny teny miafina',
+    'remember-me' => 'Hitadidy ahy',
+    'password' => 'Teny miafina',
+    'email' => 'Adiresy mailaka',
+    'pseudo' => 'Anarana fiantso',
+    'name' => 'Anarana',
+    'confirm-password' => 'Fanamarinana ny teny miafina',
 ];

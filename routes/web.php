@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('front-office.index');
 });
 
-Route::get('lang/{locale}', [\App\Http\Controllers\LocalizationController::class, 'index']);
+Route::get('lang/{locale}', [\App\Http\Controllers\LocalizationController::class, 'index'])->name('lang');
 
 Auth::routes();
 

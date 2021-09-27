@@ -3,4 +3,7 @@
 @import 'components/footer';
 @import 'components/carousel';
 @import 'pages/home';
-
+@import 'pages/auth';
+body{
+    background-color: rgb(233, 233, 233);
+}

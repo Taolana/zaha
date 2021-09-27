@@ -1,40 +1,6 @@
 @extends('front-office.layouts.app')
 @section('content')
-<section id="header" class="bg-zaha shadow">
-    <nav class="navbar zaha-bg navbar-expand-lg navbar-dark fixed-top" aria-label="Eighth navbar example">
-        <div class="container">
-            <a class="navbar-brand" href="#">Zaha</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBar" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navBar">
-                <ul class="navbar-nav me-auto"></ul>
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">{{ __('all.home') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">{{ __('all.places') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" >{{ __('all.news') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" >{{ __('all.login') }}</a>
-                    </li>
-                    {{-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdown07">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li> --}}
-                </ul>
-            </div>
-        </div>
-    </nav>
-</section>
+
 <section id="caroussel">
 
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -104,7 +70,7 @@
 <section id="content" class="zaha-content">
     <div class="container">
         <div class="row">
-            <div class="weekly-title">
+            <div class="grand-title">
                 <h1 class="">{{ __('all.weekly-place') }}</h1>
             </div>
             <div class="col">
@@ -133,7 +99,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="weekly-title">
+            <div class="grand-title">
                 <h1 class="">{{ __('all.news') }}</h1>
             </div>
             <div class="col">
@@ -157,7 +123,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="weekly-title">
+            <div class="grand-title">
                 <h1 class="">{{ __('all.top-place') }}</h1>
             </div>
         </div>
@@ -189,33 +155,5 @@
         </div>
     </div>
 </section>
-<section id="footer" class="zaha-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="zaha-links">
-                    <ul class="list">
-                        <li> <a class="list-item" href="#">{{ trans('all.home') }}</a> </li>
-                        <li> <a class="list-item" href="#">{{ __('all.news') }}</a> </li>
-                        <li> <a class="list-item" href="#">{{ __('all.places') }}</a> </li>
-                        <li> <a class="list-item" href="#">{{ __('all.about-us') }}</a> </li>
-                        <li> <a class="list-item" href="#">{{ __('all.contact-us') }}</a> </li>
-                    </ul>
-                </div>
-            </div>
-            @php $locale = session()->get('locale'); @endphp
-            
-            <div class="col-lg-3 ">
-                <div class="zaha-links">
-                    <p class="lang-switcher">{{ __('all.languages') }}:</p>
-                    <ul class="list">
-                        <li> <a class="list-item @if($locale == 'mg') active @endif" href="lang/mg">Malagasy</a> </li>
-                        <li> <a class="list-item @if($locale == 'fr') active @endif" href="lang/fr">Français</a> </li>
-                        <li> <a class="list-item @if($locale == 'en') active @endif" href="lang/en">Anglais</a> </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 @endsection

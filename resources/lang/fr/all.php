@@ -9,4 +9,12 @@ return [
     'about-us' => 'À propos',
     'weekly-place' => 'Place de la semaine',
     'top-place' => 'Places les mieux notées',
+    'sign-up' => 'Inscription',
+    'forgot-password' => 'Mot de passe oublié',
+    'remember-me' => 'Se souvenir de moi',
+    'password' => 'Mot de passe',
+    'email' => 'Adresse e-mail',
+    'pseudo' => 'Pseudo',
+    'name' => 'Nom',
+    'confirm-password' => 'Confirmation du mot de passe',
 ];
