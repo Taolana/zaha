@@ -12,7 +12,7 @@
     
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ asset('custom_back_office_css/bootstrap-5.1.1-dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bootstrap-5.1.1-dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {

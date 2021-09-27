@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('custom_back_office_css/bootstrap-5.1.1-dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bootstrap-5.1.1-dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('custom_back_office_css/app.css') }}">
 </head>
 <body>
@@ -124,6 +124,6 @@
         </div>
     </div>
 </body>
-<script src="{{ asset('custom_back_office_css/bootstrap-5.1.1-dist/js/bootstrap.bundle.js') }}"></script>
+<script src="{{ asset('bootstrap-5.1.1-dist/js/bootstrap.bundle.js') }}"></script>
 @yield('js')
 </html>

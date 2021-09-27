@@ -1,0 +1,17 @@
+{
+  "name": "front-office",
+  "version": "1.0.0",
+  "description": "front office for zaha project",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./:../../../public/custom_front_office_css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "front",
+    "zaha",
+    "tourisme"
+  ],
+  "author": "Bynan",
+  "license": "MIT"
+}

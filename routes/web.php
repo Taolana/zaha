@@ -17,9 +17,10 @@ use App\Http\Controllers\admin\ModeratorController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front-office.index');
 });
 
+Route::get('lang/{locale}', [\App\Http\Controllers\LocalizationController::class, 'index']);
 
 Auth::routes();
 

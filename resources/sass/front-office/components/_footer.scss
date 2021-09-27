@@ -1,0 +1,30 @@
+/* CUSTOMIZE THE FOOTER
+  -------------------------------------------------- */
+
+.zaha-footer {
+    background-color: green;
+    .zaha-links {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        .list{
+            list-style: none;
+            padding-left: 0;
+            .list-item{
+                text-decoration: none;
+                color: $white;
+                &:hover{
+                    color: $red;
+                }
+                &.active{
+                    color: $red;
+                }
+            }
+        }
+        .lang-switcher{
+            color: $white;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+    }
+
+}

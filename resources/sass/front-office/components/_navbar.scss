@@ -1,0 +1,21 @@
+.zaha-bg {
+    background-color: $green;
+}
+
+.navbar-dark {
+    .navbar-nav 
+    {
+        .nav-link {
+            color: $white;
+            text-transform: uppercase;
+            margin-left: 20px;
+            font-weight: 600;
+            &:hover{
+                color: $red;
+            }
+            &:active{
+                color: $red;
+            }
+        }   
+    }
+}
