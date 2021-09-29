@@ -79,7 +79,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
 Route::group(['middleware' => 'auth:guide'], function () {
     Route::view('/guide', 'front-office.index');
     Route::prefix('/guide/place')->group(function () {
-        Route::get('/list', [PlaceController::class, 'index'])->name('guide.places.list');
+        Route::get('/{any}', function () {
+            return view('front-office.pages.places');
+        })->where('any', '.*')->name('guide.places.list');
     });
 });
 
@@ -88,3 +90,5 @@ Route::group(['middleware' => 'auth:moderateur'], function () {
 });
 
 Route::get('logout', [LoginController::class,'logout']);
+
+
