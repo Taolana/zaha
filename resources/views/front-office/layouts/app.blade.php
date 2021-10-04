@@ -138,7 +138,7 @@
         </section>
     </main>
 </body>
-<script src="{{ asset('bootstrap-5.1.1-dist/js/bootstrap.bundle.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ asset('bootstrap-5.1.1-dist/js/bootstrap.bundle.js') }}"></script>
 
 </html>
