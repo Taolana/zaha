@@ -37,6 +37,7 @@ class PlaceController extends Controller
     public function store(PlacesStoreRequest $request)
     {
         $user = Auth::guard('guide');
+//        Comment
     }
 
     /**
