@@ -38307,7 +38307,11 @@ var render = function() {
                       "label",
                       {
                         staticClass: "col-md-4 col-form-label text-md-right",
+<<<<<<< HEAD
                         attrs: { for: "first_name" }
+=======
+                        attrs: { for: "name" }
+>>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
                       },
                       [_vm._v("Name")]
                     ),
@@ -38523,9 +38527,15 @@ var render = function() {
                             },
                             [
                               _vm._v(
+<<<<<<< HEAD
                                 "\n                      " +
                                   _vm._s(province.name) +
                                   "\n                    "
+=======
+                                "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
+                                  _vm._s(province.name) +
+                                  "\n\t\t\t\t\t\t\t\t\t\t\t"
+>>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
                               )
                             ]
                           )
@@ -38595,9 +38605,15 @@ var render = function() {
                             { key: region.id, domProps: { value: region.id } },
                             [
                               _vm._v(
+<<<<<<< HEAD
                                 "\n                      " +
                                   _vm._s(region.name) +
                                   "\n                    "
+=======
+                                "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
+                                  _vm._s(region.name) +
+                                  "\n\t\t\t\t\t\t\t\t\t\t\t"
+>>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
                               )
                             ]
                           )
@@ -38672,9 +38688,15 @@ var render = function() {
                             },
                             [
                               _vm._v(
+<<<<<<< HEAD
                                 "\n                      " +
                                   _vm._s(district.name) +
                                   "\n                    "
+=======
+                                "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
+                                  _vm._s(district.name) +
+                                  "\n\t\t\t\t\t\t\t\t\t\t\t"
+>>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
                               )
                             ]
                           )
@@ -38747,9 +38769,15 @@ var render = function() {
                             },
                             [
                               _vm._v(
+<<<<<<< HEAD
                                 "\n                      " +
                                   _vm._s(commune.name) +
                                   "\n                    "
+=======
+                                "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
+                                  _vm._s(commune.name) +
+                                  "\n\t\t\t\t\t\t\t\t\t\t\t"
+>>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
                               )
                             ]
                           )
@@ -38819,9 +38847,15 @@ var render = function() {
                             },
                             [
                               _vm._v(
+<<<<<<< HEAD
                                 "\n                      " +
                                   _vm._s(fokontany_item.name) +
                                   "\n                    "
+=======
+                                "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
+                                  _vm._s(fokontany_item.name) +
+                                  "\n\t\t\t\t\t\t\t\t\t\t\t"
+>>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
                               )
                             ]
                           )
@@ -38853,7 +38887,15 @@ var staticRenderFns = [
         _c(
           "button",
           { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+<<<<<<< HEAD
           [_vm._v("\n                Envoyer requete\n              ")]
+=======
+          [
+            _vm._v(
+              "\n                                    Envoyer requête\n                                "
+            )
+          ]
+>>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
         )
       ]),
       _vm._v(" "),

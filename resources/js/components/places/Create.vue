@@ -9,16 +9,16 @@
           >
         </div>
 
-        <div class="card-body">
-          <form @submit.prevent="storePlace">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row mb-4">
-                  <label
-                    for="first_name"
-                    class="col-md-4 col-form-label text-md-right"
-                    >Name</label
-                  >
+                <div class="card-body">
+                    <form @submit.prevent="storePlace">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group row mb-4">
+									<label
+										for="name"
+										class="col-md-4 col-form-label text-md-right"
+										>Name</label
+									>
 
                   <div class="col-md-6">
                     <input
@@ -39,18 +39,27 @@
                     >Type</label
                   >
 
-                  <div class="col-md-6">
-                    <input
-                      id="type"
-                      type="text"
-                      class="form-control"
-                      required
-                      v-model="form.type"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+									<div class="col-md-6">
+										<input
+											id="type"
+											type="text"
+											class="form-control"
+											required
+											v-model="form.type"
+										/>
+									</div>
+								</div>
+							</div>
+						</div>
+
+                        <div class="row">
+							<div class="col-md-6">
+								<div class="form-group row mb-4">
+									<label
+										for="history"
+										class="col-md-4 col-form-label text-md-right"
+										>History</label
+									>
 
             <div class="row">
               <div class="col-md-6">
@@ -61,24 +70,27 @@
                     >History</label
                   >
 
-                  <div class="col-md-6">
-                    <textarea
-                      id="history"
-                      type="text"
-                      class="form-control"
-                      v-model="form.history"
-                      required
-                    ></textarea>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group row mb-4">
-                  <label
-                    for="accessibility"
-                    class="col-md-4 col-form-label text-md-right"
-                    >Accessibility</label
-                  >
+									<div class="col-md-6">
+										<input
+											id="accessibility"
+											type="text"
+											v-model="form.accessibility"
+											class="form-control"
+											required
+										/>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group row mb-4">
+									<label
+										for="province"
+										class="col-md-4 col-form-label text-md-right"
+										>Province</label
+									>
 
                   <div class="col-md-6">
                     <input
@@ -216,22 +228,18 @@
                     >Fokontany</label
                   >
 
-                  <div class="col-md-6">
-                    <select
-                      name="fokontany"
-                      class="form-select"
-                      v-model="form.fokontany_id"
-                      aria-label="Default select example"
-                    >
-                      <option
-                        v-for="fokontany_item in fokontany"
-                        :key="fokontany_item.id"
-                        :value="fokontany_item.id"
-                      >
-                        {{ fokontany_item.name }}
-                      </option>
-                    </select>
-                  </div>
+                        <div class="form-group row mb-4 mt-4">
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary">
+                                    Envoyer requête
+                                </button>
+                            </div>
+							<div role="alert" class=" col-md-9 alert alert-success alert-dismissible fade show">
+									fhkh
+								<button aria-label="Close" type="button" class="btn-close" data-bs-dismiss="alert"></button>
+							</div>
+                        </div>
+                    </form>
                 </div>
               </div>
               <div class="col-md-6"></div>
