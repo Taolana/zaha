@@ -3,9 +3,10 @@
 namespace App\Models;
 
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Place;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Guide extends Authenticatable
 {
@@ -20,4 +21,9 @@ class Guide extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function places()
+    {
+        return $this->hasMany(Place::class);
+    }
 }

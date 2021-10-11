@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PlacesStoreReques extends FormRequest
+class PlacesStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,10 +28,6 @@ class PlacesStoreReques extends FormRequest
             'type' => ['required'],
             'history' => ['required'],
             'accessibility' => ['required'],
-            'province_id' => ['required'],
-            'region_id' => ['required'],
-            'district_id' => ['required'],
-            'commune_id' => ['required'],
             'fokontany_id' => ['required'],
         ];
     }

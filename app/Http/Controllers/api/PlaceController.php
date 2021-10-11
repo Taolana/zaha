@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller;
+use App\Models\Place;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PlacesStoreRequest;
 
 class PlaceController extends Controller
 {
@@ -33,9 +36,15 @@ class PlaceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PlacesStoreRequest $request)
     {
-        //
+        $id  = Auth::user();
+        $req = $request->validated();
+        $req = ['guide_id' => $id];
+        dd($req);
+        $place = Place::create($req);
+
+        return response()->json($place);
     }
 
     /**

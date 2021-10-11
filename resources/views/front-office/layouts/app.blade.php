@@ -85,8 +85,9 @@
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                document.getElementById('logout-form').submit();">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                                        document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
 
@@ -140,5 +141,8 @@
 </body>
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ asset('bootstrap-5.1.1-dist/js/bootstrap.bundle.js') }}"></script>
+<script>
+    window.useId = "{{ Auth::guard('guide')->user()->id ?? '' }}";
+</script>
 
 </html>
