@@ -10,12 +10,12 @@
                 </div>
 
                 <div class="card-body">
-                    <form>
+                    <form @submit.prevent="storePlace">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group row mb-4">
 									<label
-										for="first_name"
+										for="name"
 										class="col-md-4 col-form-label text-md-right"
 										>Name</label
 									>
@@ -51,7 +51,7 @@
 								</div>
 							</div>
 						</div>
-                        
+
                         <div class="row">
 							<div class="col-md-6">
 								<div class="form-group row mb-4">
@@ -92,7 +92,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group row mb-4">
@@ -241,7 +241,7 @@
                         <div class="form-group row mb-4 mt-4">
                             <div class="col-md-2">
                                 <button type="submit" class="btn btn-primary">
-                                    Envoyer requete
+                                    Envoyer requête
                                 </button>
                             </div>
 							<div role="alert" class=" col-md-9 alert alert-success alert-dismissible fade show">
@@ -335,6 +335,17 @@ export default {
                 .catch(error => {
                     console.log(console.error);
                 });
+        },
+        storePlace() {
+            axios.post("/api/places", {
+                name: this.form.name,
+                type: this.form.type,
+                history: this.form.history,
+                accessibility: this.form.accessibility,
+                fokontany_id: this.form.fokontany_id,
+            }).then((res)=>{
+               this.$router.push({name: "PlacesIndex"});
+            });
         }
     }
 };
