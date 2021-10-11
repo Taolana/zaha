@@ -2138,13 +2138,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -38275,7 +38268,7 @@ var render = function() {
           "div",
           { staticClass: "card-header d-flex" },
           [
-            _vm._v("\n        Create Place\n        "),
+            _vm._v("\n                    Create Place\n                    "),
             _c(
               "router-link",
               {
@@ -38307,11 +38300,7 @@ var render = function() {
                       "label",
                       {
                         staticClass: "col-md-4 col-form-label text-md-right",
-<<<<<<< HEAD
-                        attrs: { for: "first_name" }
-=======
                         attrs: { for: "name" }
->>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
                       },
                       [_vm._v("Name")]
                     ),
@@ -38527,15 +38516,9 @@ var render = function() {
                             },
                             [
                               _vm._v(
-<<<<<<< HEAD
-                                "\n                      " +
+                                "\n                                                " +
                                   _vm._s(province.name) +
-                                  "\n                    "
-=======
-                                "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                  _vm._s(province.name) +
-                                  "\n\t\t\t\t\t\t\t\t\t\t\t"
->>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
+                                  "\n                                            "
                               )
                             ]
                           )
@@ -38605,15 +38588,9 @@ var render = function() {
                             { key: region.id, domProps: { value: region.id } },
                             [
                               _vm._v(
-<<<<<<< HEAD
-                                "\n                      " +
+                                "\n                                                " +
                                   _vm._s(region.name) +
-                                  "\n                    "
-=======
-                                "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                  _vm._s(region.name) +
-                                  "\n\t\t\t\t\t\t\t\t\t\t\t"
->>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
+                                  "\n                                            "
                               )
                             ]
                           )
@@ -38688,15 +38665,9 @@ var render = function() {
                             },
                             [
                               _vm._v(
-<<<<<<< HEAD
-                                "\n                      " +
+                                "\n                                                " +
                                   _vm._s(district.name) +
-                                  "\n                    "
-=======
-                                "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                  _vm._s(district.name) +
-                                  "\n\t\t\t\t\t\t\t\t\t\t\t"
->>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
+                                  "\n                                            "
                               )
                             ]
                           )
@@ -38769,15 +38740,9 @@ var render = function() {
                             },
                             [
                               _vm._v(
-<<<<<<< HEAD
-                                "\n                      " +
+                                "\n                                                " +
                                   _vm._s(commune.name) +
-                                  "\n                    "
-=======
-                                "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                  _vm._s(commune.name) +
-                                  "\n\t\t\t\t\t\t\t\t\t\t\t"
->>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
+                                  "\n                                            "
                               )
                             ]
                           )
@@ -38847,15 +38812,9 @@ var render = function() {
                             },
                             [
                               _vm._v(
-<<<<<<< HEAD
-                                "\n                      " +
+                                "\n                                                " +
                                   _vm._s(fokontany_item.name) +
-                                  "\n                    "
-=======
-                                "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                  _vm._s(fokontany_item.name) +
-                                  "\n\t\t\t\t\t\t\t\t\t\t\t"
->>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
+                                  "\n                                            "
                               )
                             ]
                           )
@@ -38887,15 +38846,11 @@ var staticRenderFns = [
         _c(
           "button",
           { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-<<<<<<< HEAD
-          [_vm._v("\n                Envoyer requete\n              ")]
-=======
           [
             _vm._v(
               "\n                                    Envoyer requête\n                                "
             )
           ]
->>>>>>> edab15d54b1494f5ad6035a3252c7989beeb3325
         )
       ]),
       _vm._v(" "),
@@ -38903,11 +38858,13 @@ var staticRenderFns = [
         "div",
         {
           staticClass:
-            "col-md-9 alert alert-success alert-dismissible fade show",
+            " col-md-9 alert alert-success alert-dismissible fade show",
           attrs: { role: "alert" }
         },
         [
-          _vm._v("\n              fhkh\n              "),
+          _vm._v(
+            "\n                                fhkh\n                                "
+          ),
           _c("button", {
             staticClass: "btn-close",
             attrs: {
