@@ -23,8 +23,10 @@ class Place extends Model
         'accessibility' ,
         'guide_id',
         'fokontany_id' ,
+        'admin_id',
+        'moderator_id'
     ];
-    
+
     public function fokontany()
     {
         return $this->belongsTo(Fokontany::class, 'fokontany_id');

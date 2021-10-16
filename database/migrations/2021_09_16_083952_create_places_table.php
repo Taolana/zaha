@@ -19,6 +19,7 @@ class CreatePlacesTable extends Migration
             $table->foreign('fokontany_id')->references('id')->on('fokontany');
             $table->foreignId('moderateur_id')->nullable()->constrained();
             $table->foreignId('guide_id')->constrained();
+            $table->foreignId('admin_id')->nullable()->constrained();
             $table->string('name', 255);
             $table->string('type', 255);
             $table->text('history')->nullable();

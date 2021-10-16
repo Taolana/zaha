@@ -80,6 +80,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::prefix('/admin/users/touristes')->group(function () {
         Route::get('/list', [\App\Http\Controllers\admin\TouristeController::class, 'index'])->name('touristes.admin.list');
     });
+    Route::prefix('/admin')->group(function () {
+        Route::get('/place', [\App\Http\Controllers\admin\PlaceController::class, 'index'])->name('admin.places.index');
+        Route::get('/place/approuve/{idPlace}/{idApprouver}', [\App\Http\Controllers\admin\PlaceController::class, 'approuvePlace'])->name('admin.places.index.approuve');
+    });
 });
 
 Route::group(['middleware' => 'auth:guide'], function () {

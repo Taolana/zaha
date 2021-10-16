@@ -72,7 +72,7 @@
                             <div class="collapse" id="orders-collapse">
                               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="#" class="link-dark rounded">New</a></li>
-                                <li><a href="#" class="link-dark rounded">Processed</a></li>
+                                <li><a href="{{ route('admin.places.index') }}" class="link-dark rounded">Processed</a></li>
                                 <li><a href="#" class="link-dark rounded">Declined</a></li>
                               </ul>
                             </div>
