@@ -29,5 +29,6 @@ Route::get('/places/{province}/regions', [PlacesDataController::class, 'regions'
 Route::get('/places/{regions}/districts', [PlacesDataController::class, 'districts']);
 Route::get('/places/{districts}/communes', [PlacesDataController::class, 'communes']);
 Route::get('/places/{communes}/fokontany', [PlacesDataController::class, 'getFokontany']);
+Route::get('/places/user', [PlacesDataController::class, 'getUserConnected']);
 
-Route::apiResource('places', PlaceController::class);
+//Route::apiResource('places', PlaceController::class);

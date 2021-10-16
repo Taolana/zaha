@@ -4,3 +4,5 @@
         <div id="app"></div>
     </section>
 @endsection
+@section('js')
+@endsection

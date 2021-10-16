@@ -38,12 +38,12 @@
                 <td>{{ $moder->name }}</td>
                 <td>{{ $moder->email }}</td>
                 <td>
-                    <a href="#" 
+                    <a href="#"
                     id="toDelete"
                     class="btn btn-danger"
                     data-bs-toggle="modal" data-bs-target="#deleteModeratorModal"
                     data-name="{{ $moder->name }}"
-                    >Remove</a>
+                    >Deactivate</a>
                 </td>
             </tr>
         @endforeach

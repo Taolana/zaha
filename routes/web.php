@@ -72,17 +72,22 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/admin', 'back-office.index');
 
     Route::prefix('/admin/users/moderators')->group(function () {
-        Route::get('/list', [ModeratorController::class, 'index'])->name('moderators.list');
+        Route::get('/list', [ModeratorController::class, 'index'])->name('moderators.admin.list');
+    });
+    Route::prefix('/admin/users/guides')->group(function () {
+        Route::get('/list', [\App\Http\Controllers\admin\GuideController::class, 'index'])->name('guides.admin.list');
+    });
+    Route::prefix('/admin/users/touristes')->group(function () {
+        Route::get('/list', [\App\Http\Controllers\admin\TouristeController::class, 'index'])->name('touristes.admin.list');
     });
 });
 
 Route::group(['middleware' => 'auth:guide'], function () {
     Route::view('/guide', 'front-office.index');
     Route::prefix('/guide/place')->group(function () {
-        Route::get('/{any}', function () {
-            return view('front-office.pages.places');
-        })->where('any', '.*')->name('guide.places.list');
+        Route::get('/{any}', [App\Http\Controllers\api\PlaceController::class, 'index'])->where('any', '.*')->name('guide.places.list');
     });
+    Route::resource('/web/api/places', App\Http\Controllers\api\PlaceController::class);
 });
 
 Route::group(['middleware' => 'auth:moderateur'], function () {

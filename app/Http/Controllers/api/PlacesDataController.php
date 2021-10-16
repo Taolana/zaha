@@ -14,14 +14,14 @@ class PlacesDataController extends Controller
     public function provinces()
     {
         $provinces = Province::all();
-        
+
         return response()->json($provinces);
     }
 
     public function regions($region_id)
     {
         $regions = Province::find($region_id)->regions;
-        
+
         return response()->json($regions);
     }
 
@@ -45,4 +45,11 @@ class PlacesDataController extends Controller
 
         return response()->json($fokontany);
     }
+
+//    public function getUserConnected()
+//    {
+//        $user_id = Auth::guard('auth:guide')->user()->id;
+//
+//        return response()->json($user_id);
+//    }
 }

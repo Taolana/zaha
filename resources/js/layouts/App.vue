@@ -10,6 +10,7 @@ export default {
         $route() {
             $("#navbarCollapse").collapse("hide");
         }
-    }
+    },
+
 };
 </script>

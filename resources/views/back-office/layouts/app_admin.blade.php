@@ -25,7 +25,7 @@
                           <span data-feather="plus-circle"></span>
                         </a>
                     </h6>
-                    <p class="status_owner">Connected as: 
+                    <p class="status_owner">Connected as:
                         @isset(Auth::guard('admin')->user()->name)
                             {{ Auth::guard('admin')->user()->name }}
                             @else
@@ -39,12 +39,12 @@
                         </a>
                     </h6>
                     <ul class="list-unstyled ps-0">
-                        <div class="sidebar-custom list-group  scrollarea">
+{{--                        <div class="sidebar-custom list-group  scrollarea">--}}
                           <li class="mb-1 list-group-item">
-                            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
                               Home
                             </button>
-                            <div class="collapse show" id="home-collapse">
+                            <div class="collapse" id="home-collapse">
                               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="#" class="link-dark rounded">Overview</a></li>
                                 <li><a href="#" class="link-dark rounded">Updates</a></li>
@@ -83,9 +83,9 @@
                             </button>
                             <div class="collapse" id="users-collapse">
                               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{ route('moderators.list') }}" class="link-dark rounded">Moderators</a></li>
-                                <li><a href="#" class="link-dark rounded">Touristes</a></li>
-                                <li><a href="#" class="link-dark rounded">Guides</a></li>
+                                <li><a href="{{ route('moderators.admin.list') }}" class="link-dark rounded">Moderators</a></li>
+                                <li><a href="{{ route('touristes.admin.list') }}" class="link-dark rounded">Touristes</a></li>
+                                <li><a href="{{ route('guides.admin.list') }}" class="link-dark rounded">Guides</a></li>
                               </ul>
                             </div>
                           </li>
@@ -99,7 +99,7 @@
                                 <li><a href="#" class="link-dark rounded">New...</a></li>
                                 <li><a href="#" class="link-dark rounded">Profile</a></li>
                                 <li><a href="#" class="link-dark rounded">Settings</a></li>
-                                <li><a 
+                                <li><a
                                   class="link-dark rounded"
                                   href="{{ route('logout') }}"
                                   onclick="event.preventDefault();
@@ -113,7 +113,7 @@
                               </ul>
                             </div>
                           </li>
-                        </div>
+{{--                        </div>--}}
                       </ul>
                 </div>
             </nav>

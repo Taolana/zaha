@@ -141,8 +141,5 @@
 </body>
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ asset('bootstrap-5.1.1-dist/js/bootstrap.bundle.js') }}"></script>
-<script>
-    window.useId = "{{ Auth::guard('guide')->user()->id ?? '' }}";
-</script>
-
+@yield('js')
 </html>

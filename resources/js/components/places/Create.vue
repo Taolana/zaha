@@ -51,6 +51,28 @@
                                 </div>
                             </div>
                         </div>
+<!--                        <div class="row">-->
+<!--                            <div class="col-md-6">-->
+<!--                                <div class="form-group row mb-4">-->
+<!--                                    <label-->
+<!--                                        for="guide_id"-->
+<!--                                        class="col-md-4 col-form-label text-md-right"-->
+<!--                                    >Guide_id </label-->
+<!--                                    >-->
+
+<!--                                    <div class="col-md-6">-->
+<!--                                        <input-->
+<!--                                            id="guide_id"-->
+<!--                                            type="text"-->
+<!--                                            class="form-control"-->
+<!--                                            v-model="form.guide_id"-->
+<!--                                            required-->
+<!--                                            disabled-->
+<!--                                        />-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
                         <div class="row">
                             <div class="col-md-6">
@@ -244,8 +266,8 @@
                                     Envoyer requête
                                 </button>
                             </div>
-                            <div role="alert" class=" col-md-9 alert alert-success alert-dismissible fade show">
-                                fhkh
+                            <div role="alert" class=" col-md-9 alert alert-success alert-dismissible fade">
+
                                 <button aria-label="Close" type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             </div>
                         </div>
@@ -274,7 +296,8 @@ export default {
                 region_id: "",
                 district_id: "",
                 commune_id: "",
-                fokontany_id: ""
+                fokontany_id: "",
+                guide_id: ""
             }
         };
     },
@@ -284,6 +307,7 @@ export default {
         this.getDistricts();
         this.getCommunes();
         this.getFokontany();
+        // this.getUser();
     },
     methods: {
         getProvinces() {
@@ -336,15 +360,26 @@ export default {
                     console.log(console.error);
                 });
         },
+        // getUser(){
+        //     axios
+        //         .get("/api/places/user")
+        //         .then(res=>{
+        //            this.form.guide_id = res.data;
+        //            console.log("hola");
+        //         })
+        //         .catch(error => {
+        //             console.log(console.error);
+        //         });
+        // },
         storePlace() {
-            axios.post("/api/places", {
+            axios.post("/web/api/places", {
                 name: this.form.name,
                 type: this.form.type,
                 history: this.form.history,
                 accessibility: this.form.accessibility,
                 fokontany_id: this.form.fokontany_id,
             }).then((res)=>{
-                this.$router.push({name: "PlacesIndex"});
+                this.$router.push({name: "PlacesIndex"})
             });
         }
     }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\PlacesStoreRequest;
 use App\Models\Place;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +17,7 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        //
+        return view('front-office.pages.places');
     }
 
     /**
@@ -25,7 +27,7 @@ class PlaceController extends Controller
      */
     public function create()
     {
-        //
+//        dd(Auth::guard('guide')->user());
     }
 
     /**
@@ -34,10 +36,29 @@ class PlaceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PlacesStoreRequest $request)
+    public function store(Request $request)
     {
-        $user = Auth::guard('guide');
-//        Comment
+        $user_id = \Illuminate\Support\Facades\Auth::guard('guide')->user()->id;
+
+        $rules =  [
+            'name' => ['required'],
+            'type' => ['required'],
+            'history' => ['required'],
+            'accessibility' => ['required'],
+            'fokontany_id' => ['required'],
+        ];
+        $request->validate($rules, $request->all());
+        $request->request->add(['guide_id' => $user_id]);
+
+        try {
+            $place = Place::create($request->all());
+        } catch (\Throwable $th) {
+            return response()->json($th);
+        }
+
+        return response()->json([
+            'status' => 'success'
+        ]);
     }
 
     /**
