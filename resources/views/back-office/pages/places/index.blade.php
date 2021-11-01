@@ -85,17 +85,19 @@
 @endsection
 @section('js')
     <script >
-                // var $approuveModeratorModal = document.querySelector(".approuveModeratorModal")
-                // var $formApprouve = document.querySelector('#formApprouve');
-                // var $table = $("table").find("tr")
-                // var $approuve = $table.find("#toApprouve")
-                // $approuve.each(function(){
-                //     $(this).click(function(){
-                //         var action = $(this).data('action')
-                //         var name = $(this).data('name')
-                //         $formApprouve.attr('action', action)
-                //         $approuveModeratorModal.find("#name").val(name)
-                //     })
-                // });
+           $(document).ready(function () {
+                var $approuveModeratorModal = $('#approuveModeratorModal')
+                var $formApprouve = $('#formApprouve');
+                var $table = $("table").find("tr")
+                var $approuve = $table.find("#toApprouve")
+                $approuve.each(function(){
+                    $(this).click(function(){
+                        var action = $(this).data('action')
+                        var name = $(this).data('name')
+                        $formApprouve.attr('action', action)
+                        $approuveModeratorModal.find("#name").val(name)
+                    })
+                })
+            });
     </script>
 @endsection

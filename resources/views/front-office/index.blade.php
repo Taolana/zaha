@@ -12,45 +12,35 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <rect width="100%" height="100%" fill="#777" />
-                </svg>
-
+                <img src="{{url('/images/andasibe.jpg')}}" alt="Image"/>
                 <div class="container">
                     <div class="carousel-caption ">
-                        <h2>LOREM IPSUM</h2>
-                        <span><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, nemo aliquam. Rem, odit nulla? Sint ea dolor corrupti alias amet itaque ut unde ad iusto. Quaerat expedita neque odit earum!</p></span>
+                        <h2>Andasibe</h2>
+                        <span><p>Faites un tour à l'Est ...</p></span>
                         <p><a class="btn btn-lg btn-danger" href="#">Sign up today</a></p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <rect width="100%" height="100%" fill="#777" />
-                </svg>
+                <img src="{{url('/images/bemaraha.jpg')}}" alt="Image"/>
 
                 <div class="container">
                     <div class="carousel-caption">
-                        <h2>LOREM IPSUM</h2>
-                        <span><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, nemo aliquam. Rem, odit nulla? Sint ea dolor corrupti alias amet itaque ut unde ad iusto. Quaerat expedita neque odit earum!</p></span>
-                        
-                        
+                        <h2>Tsingy de Bemaraha</h2>
+                        <span><p>Visitez le Tsingy ... </p></span>
+
+
                         <p><a class="btn btn-lg btn-danger" href="#">Learn more</a></p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <rect width="100%" height="100%" fill="#777" />
-                </svg>
+                <img src="{{url('/images/Isalo.jpg')}}" alt="Image"/>
 
                 <div class="container">
                     <div class="carousel-caption">
-                        <h2>LOREM IPSUM</h2>
-                        <span><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, nemo aliquam. Rem, odit nulla? Sint ea dolor corrupti alias amet itaque ut unde ad iusto. Quaerat expedita neque odit earum!</p></span>
+                        <h2>Isalo</h2>
+                        <span><p>Beautiful place ...</p></span>
                         <p><a class="btn btn-lg btn-danger" href="#">Browse gallery</a></p>
                     </div>
                 </div>
@@ -78,19 +68,13 @@
                     <div class="row g-0">
                         <div class="col-md-4">
                             <div class="weekly-image">
-                                <svg class="bd-placeholder-img" width="100%" height="250"
-                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image"
-                                    preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#868e96" /><text x="50%" y="50%"
-                                        fill="#dee2e6" dy=".3em">Image</text>
-                                </svg>
+                                <img width="100%" height="250" src="{{url('/images/andasibe.jpg')}}" alt="Image"/>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h3 class="card-title">The famous</h3>
-                                <p class="card-text ">This is a picture to show us the news everyday</p>
+                                <h3 class="card-title">Andasibe</h3>
+                                <p class="card-text ">Andasibe est une commune rurale malgache située dans le district de Moramanga de la partie sud-est de la région d'Alaotra-Mangoro.</p>
                                 <p class="card-text "><small class="text-muted">Last updated  one day ago</small></p>
                             </div>
                         </div>
@@ -107,14 +91,14 @@
                     <div class="row g-0">
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h3 class="card-title">The famous</h3>
-                                <p class="card-text ">This is a picture to show us the news everyday</p>
+                                <h3 class="card-title">Alerte aux feux de brousse.</h3>
+                                <p class="card-text ">Plus de 10 000 hectares de forêt, ravagés chaque année par le feu. ... Selon les chiffres de la Direction de la revalorisation des ressources forestières auprès du ministère malgache de l'Environnement, 10 000 hectares de forêt sont perdus chaque année à Madagascar à cause des feux de brousse.22 juil. 2021</p>
                                 <p class="card-text "><small class="text-muted">Last updated  one day ago</small></p>
-                                <h3 class="card-title">The famous</h3>
-                                <p class="card-text ">This is a picture to show us the news everyday</p>
+                                <h3 class="card-title">Parc National d'Ankarafantsika</h3>
+                                <p class="card-text ">Le parc national d'Ankarafantsika est un parc national situé dans le nord-ouest de Madagascar, dans la région de Boeny. ... Ankarafantsika est connu pour ses lacs, derniers refuges d'espèces phares telles que le pygargue de Madagascar, le Propithèque de Coquerel et les microcèbes. L'ethnie dominante est le peuple Sakalava.</p>
                                 <p class="card-text "><small class="text-muted">Last updated  one day ago</small></p>
-                                <h3 class="card-title">The famous</h3>
-                                <p class="card-text ">This is a picture to show us the news everyday</p>
+                                <h3 class="card-title">Réserve Naturelle Intégrale de Lokobe</h3>
+                                <p class="card-text ">Une visite en petit comité avec des guides de nature très compétent, capable de trouver le moindre petit lémurien . C'était vraiment passionnant.</p>
                                 <p class="card-text "><small class="text-muted">Last updated  one day ago</small></p>
                             </div>
                         </div>
@@ -130,7 +114,15 @@
         <div class="row images-rank">
             <div class="col-md-4">
                 <div class="image-rank">
-                    image
+                    <img height="100%" width="100%"  src="{{url('/images/train.jpg')}}" alt="Image"/>
+                </div>
+                <div class="text-rank">
+                    20 vues
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="image-rank">
+                    <img height="100%" width="100%"  src="{{url('/images/isalo_2.jpg')}}" alt="Image"/>
                 </div>
                 <div class="text-rank">
                     1111vues
@@ -138,15 +130,7 @@
             </div>
             <div class="col-md-4">
                 <div class="image-rank">
-                    image
-                </div>
-                <div class="text-rank">
-                    1111vues
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="image-rank">
-                    image
+                    <img height="100%" width="100%"  src="{{url('/images/ankarafantsika-21.jpg')}}" alt="Image"/>
                 </div>
                 <div class="text-rank">
                     1111vues
