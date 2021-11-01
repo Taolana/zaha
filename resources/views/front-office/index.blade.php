@@ -125,7 +125,7 @@
                     <img height="100%" width="100%"  src="{{url('/images/isalo_2.jpg')}}" alt="Image"/>
                 </div>
                 <div class="text-rank">
-                    1111vues
+                    99 vues
                 </div>
             </div>
             <div class="col-md-4">
@@ -133,7 +133,7 @@
                     <img height="100%" width="100%"  src="{{url('/images/ankarafantsika-21.jpg')}}" alt="Image"/>
                 </div>
                 <div class="text-rank">
-                    1111vues
+                    78 vues
                 </div>
             </div>
         </div>
