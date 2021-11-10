@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Class Province
+ * @package App\Models
+ */
 class Province extends Model
 {
     use HasFactory;
@@ -14,7 +18,7 @@ class Province extends Model
     /**
      * Get all of the regions for the Province
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function regions()
     {
