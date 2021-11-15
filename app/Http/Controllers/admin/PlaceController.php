@@ -26,9 +26,37 @@ class PlaceController extends Controller
     {
         $datas = Place::where('confirmed', false)->get();
 
-        return view('back-office.pages.places.index', compact('datas'));
+        return view('back-office.pages.places.index', [
+            'datas' => $datas,
+            'approuved' => false,
+            'declined' => false
+        ]);
     }
 
+    /**
+     * @return Application|Factory|View
+     */
+    public function listApprouvedPlace()
+    {
+        $datas = Place::where('confirmed', true)->get();
+
+        return view('back-office.pages.places.index', [
+            'datas' => $datas,
+            'approuved' => true,
+            'declined' => false
+        ]);
+    }
+
+    public function listDeclinedPlace()
+    {
+        $datas = Place::where('declined', true)->get();
+
+        return view('back-office.pages.places.index', [
+            'datas' => $datas,
+            'approuved' => false,
+            'declined' => true
+        ]);
+    }
     /**
      * @param $idPlace
      * @param $idApprouver

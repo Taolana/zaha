@@ -40,7 +40,13 @@
         </form>
     </div>
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Places newly added list</h1>
+        @if($approuved == true && $declined == false)
+            <h1 class="h2">Places recently Approuved</h1>
+        @elseif($approuved == false && $declined == true)
+            <h1 class="h2">Places were Declined</h1>
+        @elseif($approuved == false && $declined == false)
+            <h1 class="h2">Places newly Added</h1>
+        @endif
         <div class="btn-toolbar mb-2 mb-md-0">
         </div>
     </div>
