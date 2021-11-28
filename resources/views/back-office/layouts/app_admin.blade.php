@@ -96,9 +96,9 @@
                             </button>
                             <div class="collapse" id="account-collapse">
                               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="#" class="link-dark rounded">New...</a></li>
-                                <li><a href="#" class="link-dark rounded">Profile</a></li>
-                                <li><a href="#" class="link-dark rounded">Settings</a></li>
+{{--                                <li><a href="#" class="link-dark rounded">New...</a></li>--}}
+{{--                                <li><a href="#" class="link-dark rounded">Profile</a></li>--}}
+{{--                                <li><a href="#" class="link-dark rounded">Settings</a></li>--}}
                                 <li><a
                                   class="link-dark rounded"
                                   href="{{ route('logout') }}"

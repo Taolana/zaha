@@ -10,7 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21",
+        "axios": "^0.21.4",
         "bootstrap": "^4.6.0",
         "jquery": "^3.6",
         "laravel-mix": "^6.0.6",
@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "moment": "^2.29.1",
+        "vform": "^2.1.2",
         "vue-router": "^3.5.2",
         "vuejs-datepicker": "^1.6.2"
     }

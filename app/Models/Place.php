@@ -33,7 +33,9 @@ class Place extends Model
         'guide_id',
         'fokontany_id' ,
         'admin_id',
-        'moderator_id'
+        'moderator_id',
+        'one_image_name',
+        'one_image_path'
     ];
 
     /**

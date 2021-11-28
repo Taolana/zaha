@@ -49,7 +49,14 @@ class PlaceController extends Controller
         ];
         $request->validate($rules, $request->all());
         $request->request->add(['guide_id' => $user_id]);
-
+//        if ($request->hasFile('image_one')){
+//            $image = $request->file('image_one');
+//            $ext = $image->extension();
+//            $file = time().'.'.$ext;
+//            $image->storeAs('public/places', $file);
+//            $request->request->add(['one_image_name' => $file]);
+//        }
+//        dd($request->all());
         try {
             $place = Place::create($request->all());
         } catch (\Throwable $th) {

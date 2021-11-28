@@ -256,8 +256,24 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                            </div>
+<!--                            <div class="col-md-6">-->
+<!--                                <div class="form-group row mb-4">-->
+<!--                                    <label-->
+<!--                                        for="image-one"-->
+<!--                                        class="col-md-4 col-form-label text-md-right"-->
+<!--                                    >Image One of the place</label-->
+<!--                                    >-->
+
+<!--                                    <div class="col-md-6">-->
+<!--                                        <input type="file"-->
+<!--                                        id="image-one"-->
+<!--                                        class="form-control-file"-->
+<!--                                        name="image_one"-->
+<!--                                        @change="onFileChange()"-->
+<!--                                        placeholder="Pick an image">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                         </div>
 
                         <div class="form-group row mb-4 mt-4">
@@ -297,7 +313,8 @@ export default {
                 district_id: "",
                 commune_id: "",
                 fokontany_id: "",
-                guide_id: ""
+                guide_id: "",
+                image_one: "",
             }
         };
     },
@@ -308,8 +325,12 @@ export default {
         this.getCommunes();
         this.getFokontany();
         // this.getUser();
+        this.onFileChange();
     },
     methods: {
+        // onFileChange(event){
+        //     this.form.image_one = event.target.files[0];
+        // },
         getProvinces() {
             axios
                 .get("/api/places/provinces")
@@ -378,6 +399,7 @@ export default {
                 history: this.form.history,
                 accessibility: this.form.accessibility,
                 fokontany_id: this.form.fokontany_id,
+                // image_one: this.form.image_one,
             }).then((res)=>{
                 this.$router.push({name: "PlacesIndex"})
             });

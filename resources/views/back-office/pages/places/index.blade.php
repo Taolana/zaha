@@ -91,19 +91,22 @@
 @endsection
 @section('js')
     <script >
-           $(document).ready(function () {
-                var $approuveModeratorModal = $('#approuveModeratorModal')
-                var $formApprouve = $('#formApprouve');
-                var $table = $("table").find("tr")
-                var $approuve = $table.find("#toApprouve")
-                $approuve.each(function(){
-                    $(this).click(function(){
-                        var action = $(this).data('action')
-                        var name = $(this).data('name')
-                        $formApprouve.attr('action', action)
-                        $approuveModeratorModal.find("#name").val(name)
-                    })
-                })
-            });
+           // var approuveModeratorModal = document.getElementById('#approuveModeratorModal');
+           // var formApprouve = document.getElementById('#formApprouve');
+           // var tr = document.querySelectorAll("#toApprouve")
+           // tr.forEach(function(){
+           //     this.addEventListener("click", function (e) {
+           //          console.log(e.getAttribute('data-action'))
+           //      })
+           // })
+           // var approuve = tr.querySelector("#toApprouve")
+           // approuve.each(function(){
+           //     $(this).click(function(){
+           //         var action = this.data('action')
+           //         var name = this.data('name')
+           //         formApprouve.attr('action', action)
+           //         approuveModeratorModal.find("#name").val(name)
+           //     })
+           // })
     </script>
 @endsection
