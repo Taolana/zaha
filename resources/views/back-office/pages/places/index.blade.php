@@ -1,14 +1,43 @@
 @extends('back-office.layouts.app_admin')
 @section('content')
     <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="showModal" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    detail
+                    <div class="mb-3">
+                        <label>
+                            <strong>Name of the place or touristic site:</strong>
+                            <input class="p-name form-control" value="test" readonly />
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <label>
+                            <strong>Type: </strong>
+                            <input class="p-type form-control" value="test" readonly />
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <label>
+                            <strong>History:</strong>
+                            <textarea class="p-history form-control" readonly ></textarea>
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <label>
+                            <strong>Accessibility:</strong>
+                            <input class="p-access form-control" value="test" readonly />
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <label>
+                            <strong>Created on:</strong>
+                            <input class="p-created form-control" value="test" readonly />
+                        </label>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
@@ -132,9 +161,13 @@
                 <td>
                     <a href="#"
                        id="toShow"
-                       class="btn btn-info approuve"
+                       class="btn btn-info shower-btn"
                        data-bs-toggle="modal" data-bs-target="#showModal"
                        data-name="{{ $data->name }}"
+                       data-history="{{ $data->history }}"
+                       data-type="{{ $data->type }}"
+                       data-access="{{ $data->accessibility }}"
+                       data-date="{{ $data->created_at->format('Y-m-d') }}"
 {{--                       data-action="{{ route('admin.places.index.approuve', [($data->id), (Auth::guard('admin')->user()->id)] ) }}"--}}
                     >View</a>
                 </td>
@@ -152,6 +185,7 @@
             var formApprouve = document.querySelector('.approuve-form')
             var formDecline = document.querySelector('.decline-form')
             var approuve = document.querySelectorAll(".approuve");
+            var view = document.querySelectorAll(".shower-btn");
             var decline = document.querySelectorAll(".decline");
             approuve.forEach(function(button){
                button.addEventListener("click", function (e) {
@@ -166,9 +200,20 @@
                 button.addEventListener("click", function (e) {
                     var action = button.getAttribute("data-action");
                     var name = button.getAttribute("data-name");
+                    var history = button.getAttribute("data-history");
                     formDecline.setAttribute('action', action);
                     var variance = document.querySelector('.modal-name-variance-delete');
                     variance.innerHTML = name;
+                    document.querySelector('.p-history').value = history;
+                })
+            })
+            view.forEach(function(button){
+                button.addEventListener("click", function (e) {
+                    document.querySelector('.p-history').value = button.getAttribute("data-history");
+                    document.querySelector('.p-name').value = button.getAttribute("data-name");
+                    document.querySelector('.p-access').value = button.getAttribute("data-access");
+                    document.querySelector('.p-type').value = button.getAttribute("data-type");
+                    document.querySelector('.p-created').value = button.getAttribute("data-date");
                 })
             })
     </script>
