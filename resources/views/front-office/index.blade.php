@@ -12,12 +12,27 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
+
                 <img src="{{url('/images/andasibe.jpg')}}" alt="Image"/>
                 <div class="container">
                     <div class="carousel-caption ">
-                        <h2>Andasibe</h2>
-                        <span><p>Faites un tour à l'Est ...</p></span>
-                        <p><a class="btn btn-lg btn-danger" href="#">Sign up today</a></p>
+                        <h2>{{ $first->name }}</h2>
+                        <p><span>{{ $first->history }}</span></p>
+                        <p><a class="btn btn-lg btn-danger" href="#">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="{{url('/images/bemaraha.jpg')}}" alt="Image"/>
+
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h2>{{ $other1->name }}</h2>
+                        <p><span>{{ $other1->history }}</span></p>
+
+
+                        <p><a class="btn btn-lg btn-danger" href="#">Learn more</a></p>
                     </div>
                 </div>
             </div>
@@ -26,22 +41,11 @@
 
                 <div class="container">
                     <div class="carousel-caption">
-                        <h2>Tsingy de Bemaraha</h2>
-                        <span><p>Visitez le Tsingy ... </p></span>
+                        <h2>{{ $other2->name }}</h2>
+                        <p><span>{{ $other2->history }}</span></p>
 
 
                         <p><a class="btn btn-lg btn-danger" href="#">Learn more</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{{url('/images/Isalo.jpg')}}" alt="Image"/>
-
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h2>Isalo</h2>
-                        <span><p>Beautiful place ...</p></span>
-                        <p><a class="btn btn-lg btn-danger" href="#">Browse gallery</a></p>
                     </div>
                 </div>
             </div>
@@ -117,7 +121,7 @@
                     <img height="100%" width="100%"  src="{{url('/images/train.jpg')}}" alt="Image"/>
                 </div>
                 <div class="text-rank">
-                    20 vues
+                    190 vues
                 </div>
             </div>
             <div class="col-md-4">

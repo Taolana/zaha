@@ -3,18 +3,25 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Place;
 use Illuminate\Http\Request;
 
 class PlaceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('front-office.pages.places');
+        $datas = Place::where('confirmed', true)->paginate(3);
+
+        return view('front-office.pages.places', [
+            'datas' => $datas,
+            'approuved' => true,
+            'declined' => false
+        ]);
+    }
+
+    public function showPlacesSlideHome()
+    {
+
     }
 
     /**

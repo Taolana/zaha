@@ -122,7 +122,11 @@
                            data-bs-toggle="modal" data-bs-target="#approuveModeratorModal"
                            data-name="{{ $data->name }}"
                            data-action="{{ route('admin.places.index.approuve', [($data->id), (Auth::guard('admin')->user()->id)] ) }}"
-                        >Approuve</a>
+                        >   @if($declined == true)
+                                Re-Approuve
+                            @else
+                                Approuve
+                            @endif</a>
                     </td>
                 @endif
                 <td>

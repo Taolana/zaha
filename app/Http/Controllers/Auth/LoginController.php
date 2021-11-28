@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Place;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -45,7 +46,7 @@ class LoginController extends Controller
     }
 
     /**
-     * 
+     *
      * Show forms
      */
     public function showAdminLoginForm()
@@ -60,7 +61,11 @@ class LoginController extends Controller
 
     public function showGuideLoginForm()
     {
-        return view('auth.login', ['url' => 'guide']);
+        return view('auth.login',
+            [
+                'url' => 'guide',
+            ]
+        );
     }
 
     public function showModerateurLoginForm()
@@ -68,7 +73,7 @@ class LoginController extends Controller
         return view('back-office.bearer.login', ['url' => 'moderateur']);
     }
     /**
-     * 
+     *
      * Log users
      */
 
@@ -81,10 +86,10 @@ class LoginController extends Controller
 
         if (Auth::guard('admin')->attempt(
             [
-                'email' => $request->email, 
+                'email' => $request->email,
                 'password' => $request->password,
                 'is_admin' => true,
-            ], 
+            ],
             $request->get('remember'))) {
 
             return redirect()->intended('/admin');
@@ -102,10 +107,10 @@ class LoginController extends Controller
 
         if (Auth::guard('touriste')->attempt(
             [
-                'email' => $request->email, 
+                'email' => $request->email,
                 'password' => $request->password,
                 'is_touriste' => true,
-            ], 
+            ],
             $request->get('remember'))) {
 
             return redirect()->intended('/touriste');
@@ -122,10 +127,10 @@ class LoginController extends Controller
 
         if (Auth::guard('guide')->attempt(
             [
-                'email' => $request->email, 
+                'email' => $request->email,
                 'password' => $request->password,
                 'is_guide' => true,
-            ], 
+            ],
             $request->get('remember'))) {
 
             return redirect()->intended('/guide');
@@ -143,10 +148,10 @@ class LoginController extends Controller
 
         if (Auth::guard('moderateur')->attempt(
             [
-                'email' => $request->email, 
+                'email' => $request->email,
                 'password' => $request->password,
                 'is_moderator' => true,
-            ], 
+            ],
             $request->get('remember'))) {
 
             return redirect()->intended('/moderateur');

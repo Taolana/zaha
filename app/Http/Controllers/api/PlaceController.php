@@ -13,11 +13,17 @@ class PlaceController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        return view('front-office.pages.places');
+        $datas = Place::latest()->where('confirmed', true)->paginate(3);
+
+        return view('front-office.pages.places', [
+            'datas' => $datas,
+            'approuved' => true,
+            'declined' => false
+        ]);
     }
 
     /**

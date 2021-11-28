@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Place;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\front\PlaceController;
@@ -18,8 +19,18 @@ use App\Http\Controllers\admin\ModeratorController;
 */
 
 Route::get('/', function () {
-    return view('front-office.index');
+    $datas = Place::orderBy('updated_at', 'desc')->where('confirmed', true)->limit(3)->get();
+    $first = $datas[0];
+    $other1 = $datas[1];
+    $other2 = $datas[2];
+    return view('front-office.index',
+    [
+        'first'=>$first,
+        'other1'=>$other1,
+        'other2'=>$other2,
+    ]);
 });
+
 
 Route::get('lang/{locale}', [\App\Http\Controllers\LocalizationController::class, 'index'])->name('lang');
 
