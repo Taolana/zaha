@@ -16,8 +16,16 @@
                 <img src="{{url('/images/andasibe.jpg')}}" alt="Image"/>
                 <div class="container">
                     <div class="carousel-caption ">
-                        <h2>{{ $first->name }}</h2>
-                        <p><span>{{ $first->history }}</span></p>
+                        <h2>
+                            @if(isset($first))
+                                {{ $first->name }}
+                            @endif
+                        </h2>
+                        <p><span>
+                                @if(isset($first))
+                                    {{ $first->history }}
+                                @endif
+                            </span></p>
                         <p><a class="btn btn-lg btn-danger" href="#">Learn more</a></p>
                     </div>
                 </div>
@@ -28,8 +36,16 @@
 
                 <div class="container">
                     <div class="carousel-caption">
-                        <h2>{{ $other1->name }}</h2>
-                        <p><span>{{ $other1->history }}</span></p>
+                        <h2>
+                            @if(isset($first))
+                                {{ $other1->name }}
+                            @endif
+                        </h2>
+                        <p><span>
+                                @if(isset($first))
+                                    {{ $other1->history }}
+                                @endif
+                            </span></p>
 
 
                         <p><a class="btn btn-lg btn-danger" href="#">Learn more</a></p>
@@ -41,8 +57,16 @@
 
                 <div class="container">
                     <div class="carousel-caption">
-                        <h2>{{ $other2->name }}</h2>
-                        <p><span>{{ $other2->history }}</span></p>
+                        <h2>
+                            @if(isset($first))
+                                {{ $other2->name }}
+                            @endif
+                        </h2>
+                        <p><span>
+                                @if(isset($first))
+                                    {{ $other2->history }}
+                                @endif
+                            </span></p>
 
 
                         <p><a class="btn btn-lg btn-danger" href="#">Learn more</a></p>

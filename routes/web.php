@@ -28,7 +28,8 @@ Route::get('/', function () {
         'first'=>$first,
         'other1'=>$other1,
         'other2'=>$other2,
-    ]);
+    ]
+    );
 });
 
 
@@ -73,7 +74,16 @@ Route::post('/register/guide', [RegisterController::class,'createGuide']);
 // middlewares
 
 Route::group(['middleware' => 'auth:touriste'], function () {
-    Route::view('/touriste', 'front-office.index');
+    $datas = Place::orderBy('updated_at', 'desc')->where('confirmed', true)->limit(3)->get();
+    $first = $datas[0];
+    $other1 = $datas[1];
+    $other2 = $datas[2];
+
+    Route::view('/touriste', 'front-office.index', [
+        'first'=>$first,
+        'other1'=>$other1,
+        'other2'=>$other2,
+    ]);
     Route::prefix('/touriste')->group(function () {
         Route::get('/list', [PlaceController::class, 'index'])->name('touriste.places.list');
     });
@@ -101,7 +111,15 @@ Route::group(['middleware' => 'auth:admin'], function () {
 });
 
 Route::group(['middleware' => 'auth:guide'], function () {
-    Route::view('/guide', 'front-office.index');
+    $datas = Place::orderBy('updated_at', 'desc')->where('confirmed', true)->limit(3)->get();
+    $first = $datas[0];
+    $other1 = $datas[1];
+    $other2 = $datas[2];
+    Route::view('/guide', 'front-office.index', [
+        'first'=>$first,
+        'other1'=>$other1,
+        'other2'=>$other2,
+    ]);
     Route::prefix('/guide/place')->group(function () {
         Route::get('/{any}', [App\Http\Controllers\api\PlaceController::class, 'index'])->where('any', '.*')->name('guide.places.list');
     });
