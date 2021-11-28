@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use ReflectionClass;
 
 /**
  * Class PlaceController
@@ -24,7 +25,7 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        $datas = Place::where('confirmed', false)->get();
+        $datas = Place::latest()->where('confirmed', false)->where('declined', false)->paginate(3);
 
         return view('back-office.pages.places.index', [
             'datas' => $datas,
@@ -50,7 +51,6 @@ class PlaceController extends Controller
     public function listDeclinedPlace()
     {
         $datas = Place::where('declined', true)->get();
-
         return view('back-office.pages.places.index', [
             'datas' => $datas,
             'approuved' => false,
@@ -64,10 +64,33 @@ class PlaceController extends Controller
      */
     public function approuvePlace($idPlace, $idApprouver)
     {
-        $place = Place::find($idPlace)->first();
-        $place->admin_id($idApprouver);
+        $place = Place::find($idPlace);
+        $place->admin_id = $idApprouver;
+        $place->confirmed = true;
+
         try {
-            $place->update();
+            $place->save();
+
+            return redirect()->route('admin.places.index');
+        }catch (\Throwable $th){
+            die();
+        }
+    }
+
+    /**
+     * Decline place
+     * @param $idPlace
+     * @param $idApprouver
+     * @return RedirectResponse
+     */
+    public function declinePlace($idPlace, $idDeclinner)
+    {
+        $place = Place::find($idPlace);
+        $place->admin_id = $idDeclinner;
+        $place->declined = true;
+
+        try {
+            $place->save();
 
             return redirect()->route('admin.places.index');
         }catch (\Throwable $th){

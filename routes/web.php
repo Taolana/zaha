@@ -83,6 +83,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::prefix('/admin')->group(function () {
         Route::get('/place', [\App\Http\Controllers\admin\PlaceController::class, 'index'])->name('admin.places.index');
         Route::get('/place/approuve/{idPlace}/{idApprouver}', [\App\Http\Controllers\admin\PlaceController::class, 'approuvePlace'])->name('admin.places.index.approuve');
+        Route::get('/place/decline/{idPlace}/{idDeclinner}', [\App\Http\Controllers\admin\PlaceController::class, 'declinePlace'])->name('admin.places.index.decline');
         Route::get('/place/approuved', [\App\Http\Controllers\admin\PlaceController::class, 'listApprouvedPlace'])->name('admin.places.list.approuved');
         Route::get('/place/declined', [\App\Http\Controllers\admin\PlaceController::class, 'listDeclinedPlace'])->name('admin.places.list.declined');
     });

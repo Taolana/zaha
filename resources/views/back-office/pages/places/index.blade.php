@@ -1,26 +1,47 @@
 @extends('back-office.layouts.app_admin')
 @section('content')
-    <div class="modal fade" id="deleteModeratorModal" tabindex="-1" aria-labelledby="deleteModeratorModal" aria-hidden="true">
+    <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="showModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Sure to delete <span id="name"></span> ?
+                    detail
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">NO</button>
-                    <button type="button" class="btn btn-danger">Yes</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="approuveModeratorModal" tabindex="-1" aria-labelledby="approuveModeratorModal" aria-hidden="true">
-        <form id="formApprouve" method="GET"  >
+    <div class="modal fade" id="deleteModeratorModal" tabindex="-1" aria-labelledby="deleteModeratorModal" aria-hidden="true">
+        <form id="formDecline" class="decline-form">
             @csrf
-            @method('POST')
+            @method('PUT')
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Are you sure ?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Sure to delete <span id="name" class="modal-name-variance-delete"></span> ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">NO</button>
+                        <button type="submit" class="btn btn-danger">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal fade approuve-modal" id="approuveModeratorModal" tabindex="-1" aria-labelledby="approuveModeratorModal" aria-hidden="true">
+        <form id="formApprouve" class="approuve-form">
+            @csrf
+            @method('PUT')
 
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -29,11 +50,11 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Sure to approuve this place:  <span id="name"></span> ?
+                        Sure to approuve this place:  <span id="name" class="modal-name-variance"></span> ?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">NO</button>
-                        <button type="submit" class="btn btn-danger">Yes</button>
+                        <button type="submit" class="btn btn-success">Yes</button>
                     </div>
                 </div>
             </div>
@@ -56,8 +77,14 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Add by</th>
-            <th scope="col">Desactivate</th>
-            <th scope="col">Approuve</th>
+            <th scope="col">Status</th>
+            @if($declined == false)
+                <th scope="col">Desactivate</th>
+            @endif
+            @if($approuved == false)
+                <th scope="col">Approuve</th>
+            @endif
+            <th scope="col">View</th>
         </tr>
         </thead>
         <tbody>
@@ -66,47 +93,79 @@
                 <th scope="row">{{ $data->id }}</th>
                 <td>{{ $data->name }}</td>
                 <td>{{ $data->guide->pseudo }}</td>
+                @if($declined == false && $approuved == false)
+                    <td><span class="badge bg-primary">new</span></td>
+                    @elseif($declined == true)
+                    <td><span class="badge bg-danger">declined</span></td>
+                    @elseif($approuved == true)
+                    <td><span class="badge bg-success">approuved</span></td>
+                @else
+                    <td>-</td>
+                @endif
+
+                @if($declined == false)
+                    <td>
+                        <a href="#"
+                           id="toDelete"
+                           class="btn btn-danger decline"
+                           data-bs-toggle="modal" data-bs-target="#deleteModeratorModal"
+                           data-name="{{ $data->name }}"
+                           data-action="{{ route('admin.places.index.decline', [($data->id), (Auth::guard('admin')->user()->id)] ) }}"
+                        >Deactivate</a>
+                    </td>
+                @endif
+                @if($approuved == false)
+                    <td>
+                        <a href="#"
+                           id="toApprouve"
+                           class="btn btn-success approuve"
+                           data-bs-toggle="modal" data-bs-target="#approuveModeratorModal"
+                           data-name="{{ $data->name }}"
+                           data-action="{{ route('admin.places.index.approuve', [($data->id), (Auth::guard('admin')->user()->id)] ) }}"
+                        >Approuve</a>
+                    </td>
+                @endif
                 <td>
                     <a href="#"
-                       id="toDelete"
-                       class="btn btn-danger"
-                       data-bs-toggle="modal" data-bs-target="#deleteModeratorModal"
+                       id="toShow"
+                       class="btn btn-info approuve"
+                       data-bs-toggle="modal" data-bs-target="#showModal"
                        data-name="{{ $data->name }}"
-                    >Deactivate</a>
-                </td>
-                <td>
-                    <a href="#"
-                       id="toApprouve"
-                       class="btn btn-success"
-                       data-bs-toggle="modal" data-bs-target="#approuveModeratorModal"
-                       data-name="{{ $data->name }}"
-                       data-action="{{ route('admin.places.index.approuve', [($data->id), (Auth::guard('admin')->user()->id)] ) }}"
-                    >Approuve</a>
+{{--                       data-action="{{ route('admin.places.index.approuve', [($data->id), (Auth::guard('admin')->user()->id)] ) }}"--}}
+                    >View</a>
                 </td>
             </tr>
         @endforeach
         </tbody>
-        {{ Auth::guard('admin')->user()->id }}
     </table>
+    <div class="d-flex">
+        {!! $datas->links() !!}
+    </div>
 @endsection
 @section('js')
     <script >
-           // var approuveModeratorModal = document.getElementById('#approuveModeratorModal');
-           // var formApprouve = document.getElementById('#formApprouve');
-           // var tr = document.querySelectorAll("#toApprouve")
-           // tr.forEach(function(){
-           //     this.addEventListener("click", function (e) {
-           //          console.log(e.getAttribute('data-action'))
-           //      })
-           // })
-           // var approuve = tr.querySelector("#toApprouve")
-           // approuve.each(function(){
-           //     $(this).click(function(){
-           //         var action = this.data('action')
-           //         var name = this.data('name')
-           //         formApprouve.attr('action', action)
-           //         approuveModeratorModal.find("#name").val(name)
-           //     })
-           // })
+            var approuveModeratorModal = document.querySelector('.approuve-modal');
+            var formApprouve = document.querySelector('.approuve-form')
+            var formDecline = document.querySelector('.decline-form')
+            var approuve = document.querySelectorAll(".approuve");
+            var decline = document.querySelectorAll(".decline");
+            approuve.forEach(function(button){
+               button.addEventListener("click", function (e) {
+                    var action = button.getAttribute("data-action");
+                    var name = button.getAttribute("data-name");
+                   formApprouve.setAttribute('action', action);
+                   var variance = document.querySelector('.modal-name-variance');
+                   variance.innerHTML = name;
+                })
+            })
+            decline.forEach(function(button){
+                button.addEventListener("click", function (e) {
+                    var action = button.getAttribute("data-action");
+                    var name = button.getAttribute("data-name");
+                    formDecline.setAttribute('action', action);
+                    var variance = document.querySelector('.modal-name-variance-delete');
+                    variance.innerHTML = name;
+                })
+            })
     </script>
 @endsection
