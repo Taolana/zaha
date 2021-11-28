@@ -29,7 +29,7 @@ class HomeController extends Controller
 
     public function home()
     {
-        $datas = Place::orderBy('updated_at', 'desc')->where('confirmed', true)->limit(3)->get();
+        $datas = Place::orderBy('created_at', 'desc')->where('confirmed', true)->limit(3)->get();
         $first = $datas[0];
         $other1 = $datas[1];
         $other2 = $datas[2];

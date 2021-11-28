@@ -19,7 +19,7 @@ use App\Http\Controllers\admin\ModeratorController;
 */
 
 Route::get('/', function () {
-    $datas = Place::orderBy('updated_at', 'desc')->where('confirmed', true)->limit(3)->get();
+    $datas = Place::orderBy('created_at', 'desc')->where('confirmed', true)->limit(3)->get();
     $first = $datas[0];
     $other1 = $datas[1];
     $other2 = $datas[2];
@@ -74,7 +74,7 @@ Route::post('/register/guide', [RegisterController::class,'createGuide']);
 // middlewares
 
 Route::group(['middleware' => 'auth:touriste'], function () {
-    $datas = Place::orderBy('updated_at', 'desc')->where('confirmed', true)->limit(3)->get();
+    $datas = Place::orderBy('created_at', 'desc')->where('confirmed', true)->limit(3)->get();
     $first = $datas[0];
     $other1 = $datas[1];
     $other2 = $datas[2];
@@ -111,7 +111,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 });
 
 Route::group(['middleware' => 'auth:guide'], function () {
-    $datas = Place::orderBy('updated_at', 'desc')->where('confirmed', true)->limit(3)->get();
+    $datas = Place::orderBy('created_at', 'desc')->where('confirmed', true)->limit(3)->get();
     $first = $datas[0];
     $other1 = $datas[1];
     $other2 = $datas[2];

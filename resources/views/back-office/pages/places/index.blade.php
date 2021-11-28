@@ -23,7 +23,7 @@
                     <div class="mb-3">
                         <label>
                             <strong>History:</strong>
-                            <textarea class="p-history form-control" readonly ></textarea>
+                            <p class="p-history" ></p>
                         </label>
                     </div>
                     <div class="mb-3">
@@ -209,7 +209,7 @@
             })
             view.forEach(function(button){
                 button.addEventListener("click", function (e) {
-                    document.querySelector('.p-history').value = button.getAttribute("data-history");
+                    document.querySelector('.p-history').innerHTML = button.getAttribute("data-history");
                     document.querySelector('.p-name').value = button.getAttribute("data-name");
                     document.querySelector('.p-access').value = button.getAttribute("data-access");
                     document.querySelector('.p-type').value = button.getAttribute("data-type");

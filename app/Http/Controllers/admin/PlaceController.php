@@ -39,7 +39,7 @@ class PlaceController extends Controller
      */
     public function listApprouvedPlace()
     {
-        $datas = Place::where('confirmed', true)->paginate(3);
+        $datas = Place::latest()->where('confirmed', true)->paginate(3);
 
         return view('back-office.pages.places.index', [
             'datas' => $datas,
@@ -50,7 +50,7 @@ class PlaceController extends Controller
 
     public function listDeclinedPlace()
     {
-        $datas = Place::where('declined', true)->paginate(3);
+        $datas = Place::latest()->where('declined', true)->paginate(3);
         return view('back-office.pages.places.index', [
             'datas' => $datas,
             'approuved' => false,
