@@ -71,7 +71,7 @@ class PlaceController extends Controller
         try {
             $place->save();
 
-            return redirect()->route('admin.places.index');
+            return redirect()->route('admin.places.list.approuved');
         }catch (\Throwable $th){
             die();
         }
@@ -92,7 +92,7 @@ class PlaceController extends Controller
         try {
             $place->save();
 
-            return redirect()->route('admin.places.index');
+            return redirect()->route('admin.places.list.declined');
         }catch (\Throwable $th){
             die();
         }
