@@ -23,7 +23,7 @@
                         </h2>
                         <p><span>
                                 @if(isset($first))
-                                    {{ $first->history }}
+                                    {{ \Illuminate\Support\Str::limit($first->history, 150, $end='  [...]') }}
                                 @endif
                             </span></p>
                         <p><a class="btn btn-lg btn-danger" href="#">Learn more</a></p>
@@ -43,7 +43,7 @@
                         </h2>
                         <p><span>
                                 @if(isset($first))
-                                    {{ $other1->history }}
+                                    {{ \Illuminate\Support\Str::limit($other1->history, 150, $end='  [...]') }}
                                 @endif
                             </span></p>
 
@@ -64,7 +64,7 @@
                         </h2>
                         <p><span>
                                 @if(isset($first))
-                                    {{ $other2->history }}
+                                    {{ \Illuminate\Support\Str::limit($other2->history, 150, $end='  [...]') }}
                                 @endif
                             </span></p>
 
