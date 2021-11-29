@@ -21,9 +21,15 @@ use App\Http\Controllers\admin\ModeratorController;
 Route::get('/', function () {
     $datas = Place::orderBy('created_at', 'desc')->where('confirmed', true)->limit(3)->get();
     if(!empty($datas->toArray())){
-        $first = $datas[0];
-        $other1 = $datas[1];
-        $other2 = $datas[2];
+        if(array_key_exists(0,$datas->toArray())){
+            $first = $datas[0];
+        }
+        if(array_key_exists(1,$datas->toArray())){
+            $other1 = $datas[1];
+        }
+        if(array_key_exists(2,$datas->toArray())){
+            $other2 = $datas[2];
+        }
     }
     return view('front-office.index',
     [
@@ -78,9 +84,15 @@ Route::post('/register/guide', [RegisterController::class,'createGuide']);
 Route::group(['middleware' => 'auth:touriste'], function () {
     $datas = Place::orderBy('created_at', 'desc')->where('confirmed', true)->limit(3)->get();
     if(!empty($datas->toArray())){
-        $first = $datas[0];
-        $other1 = $datas[1];
-        $other2 = $datas[2];
+        if(array_key_exists(0,$datas->toArray())){
+            $first = $datas[0];
+        }
+        if(array_key_exists(1,$datas->toArray())){
+            $other1 = $datas[1];
+        }
+        if(array_key_exists(2,$datas->toArray())){
+            $other2 = $datas[2];
+        }
     }
 
     Route::view('/touriste', 'front-office.index', [
@@ -117,9 +129,15 @@ Route::group(['middleware' => 'auth:admin'], function () {
 Route::group(['middleware' => 'auth:guide'], function () {
     $datas = Place::orderBy('created_at', 'desc')->where('confirmed', true)->limit(3)->get();
     if(!empty($datas->toArray())){
-        $first = $datas[0];
-        $other1 = $datas[1];
-        $other2 = $datas[2];
+        if(array_key_exists(0,$datas->toArray())){
+            $first = $datas[0];
+        }
+        if(array_key_exists(1,$datas->toArray())){
+            $other1 = $datas[1];
+        }
+        if(array_key_exists(2,$datas->toArray())){
+            $other2 = $datas[2];
+        }
     }
 
     Route::view('/guide', 'front-office.index', [
