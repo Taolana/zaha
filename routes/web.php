@@ -122,7 +122,7 @@ Route::group(['middleware' => 'auth:guide'], function () {
         $other2 = $datas[2];
     }
 
-    Route::view('/touriste', 'front-office.index', [
+    Route::view('/guide', 'front-office.index', [
         'first'=>$first = null,
         'other1'=>$other1 = null,
         'other2'=>$other2 = null,
