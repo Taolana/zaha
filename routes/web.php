@@ -20,14 +20,16 @@ use App\Http\Controllers\admin\ModeratorController;
 
 Route::get('/', function () {
     $datas = Place::orderBy('created_at', 'desc')->where('confirmed', true)->limit(3)->get();
-    $first = $datas[0];
-    $other1 = $datas[1];
-    $other2 = $datas[2];
+    if(!empty($datas->toArray())){
+        $first = $datas[0];
+        $other1 = $datas[1];
+        $other2 = $datas[2];
+    }
     return view('front-office.index',
     [
-        'first'=>$first,
-        'other1'=>$other1,
-        'other2'=>$other2,
+        'first'=>$first = null,
+        'other1'=>$other1 = null,
+        'other2'=>$other2 = null,
     ]
     );
 });
@@ -75,14 +77,16 @@ Route::post('/register/guide', [RegisterController::class,'createGuide']);
 
 Route::group(['middleware' => 'auth:touriste'], function () {
     $datas = Place::orderBy('created_at', 'desc')->where('confirmed', true)->limit(3)->get();
-    $first = $datas[0];
-    $other1 = $datas[1];
-    $other2 = $datas[2];
+    if(!empty($datas->toArray())){
+        $first = $datas[0];
+        $other1 = $datas[1];
+        $other2 = $datas[2];
+    }
 
     Route::view('/touriste', 'front-office.index', [
-        'first'=>$first,
-        'other1'=>$other1,
-        'other2'=>$other2,
+        'first'=>$first = null,
+        'other1'=>$other1 = null,
+        'other2'=>$other2 = null,
     ]);
     Route::prefix('/touriste')->group(function () {
         Route::get('/list', [PlaceController::class, 'index'])->name('touriste.places.list');
@@ -112,13 +116,16 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
 Route::group(['middleware' => 'auth:guide'], function () {
     $datas = Place::orderBy('created_at', 'desc')->where('confirmed', true)->limit(3)->get();
-    $first = $datas[0];
-    $other1 = $datas[1];
-    $other2 = $datas[2];
-    Route::view('/guide', 'front-office.index', [
-        'first'=>$first,
-        'other1'=>$other1,
-        'other2'=>$other2,
+    if(!empty($datas->toArray())){
+        $first = $datas[0];
+        $other1 = $datas[1];
+        $other2 = $datas[2];
+    }
+
+    Route::view('/touriste', 'front-office.index', [
+        'first'=>$first = null,
+        'other1'=>$other1 = null,
+        'other2'=>$other2 = null,
     ]);
     Route::prefix('/guide/place')->group(function () {
         Route::get('/{any}', [App\Http\Controllers\api\PlaceController::class, 'index'])->where('any', '.*')->name('guide.places.list');

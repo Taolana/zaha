@@ -30,15 +30,17 @@ class HomeController extends Controller
     public function home()
     {
         $datas = Place::orderBy('created_at', 'desc')->where('confirmed', true)->limit(3)->get();
-        $first = $datas[0];
-        $other1 = $datas[1];
-        $other2 = $datas[2];
+        if(!empty($datas->toArray())){
+            $first = $datas[0];
+            $other1 = $datas[1];
+            $other2 = $datas[2];
+        }
 
         return view('front-office.index',
             [
-                'first'=>$first,
-                'other1'=>$other1,
-                'other2'=>$other2,
+                'first'=>$first = null,
+                'other1'=>$other1 = null,
+                'other2'=>$other2 = null,
             ]
         );
     }

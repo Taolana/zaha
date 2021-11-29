@@ -37,12 +37,12 @@
                 <div class="container">
                     <div class="carousel-caption">
                         <h2>
-                            @if(isset($first))
+                            @if(isset($other1))
                                 {{ $other1->name }}
                             @endif
                         </h2>
                         <p><span>
-                                @if(isset($first))
+                                @if(isset($other1))
                                     {{ \Illuminate\Support\Str::limit($other1->history, 150, $end='  [...]') }}
                                 @endif
                             </span></p>
@@ -58,12 +58,12 @@
                 <div class="container">
                     <div class="carousel-caption">
                         <h2>
-                            @if(isset($first))
+                            @if(isset($other2))
                                 {{ $other2->name }}
                             @endif
                         </h2>
                         <p><span>
-                                @if(isset($first))
+                                @if(isset($other2))
                                     {{ \Illuminate\Support\Str::limit($other2->history, 150, $end='  [...]') }}
                                 @endif
                             </span></p>
